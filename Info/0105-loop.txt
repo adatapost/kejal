@@ -1,24 +1,13 @@
-01-05-2013
-
-
+Date: 01-05-2013
 1. Input integer number and test a number is prime or not.
-
    A number is only divisible by 1 or itself is called    prime number.
-
         e.g 
              1 2 3 5 7 11 13 17 19 are prime numbers.
-
-
 2. Input integer number and test a number is perfect or
    not.
-
-
      e.g
-
         sum of factor is equivalent to input number.
-
         e.g
-
           factor of 28 are 1 2 4 7 14 and
 
             sum of factor = 1 + 2 + 4 + 7 + 14 = 28 so 28
