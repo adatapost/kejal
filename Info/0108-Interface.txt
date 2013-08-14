@@ -1,0 +1,120 @@
+Interface to create "event" or "callback"
+============================================================
+
+ 
+     What is an "event" ?
+     ========================
+     An "event" is unexpected "happening" in our code based upon the
+     actions/data.
+
+
+
+
+In following example, we want to create "Event Publisher" class that raises events and we also want to create "Event Subscribe" class that would subscribe events from "Publisher".
+
+Ex: Create a class named "Test" and add "int no" field. This class raises "Changed" event whenever value of "no" is modified/updated.
+
+
+
+1. First of define "Interface" that will be used to hold memory    reference of object & "method".
+
+interface Message
+{
+   void show(int oldValue, int newValue);
+}
+
+2. Create Publisher class which includes "Interface" reference    variable and other fields.
+
+/* Publisher class */
+class Test
+{
+     private int no;
+     public Message changed;  /* Event */ 
+     public void setNo(int no)
+     {
+        //Raise the event
+       
+        if(changed!=null)
+         {
+           changed.show(this.no,no);  
+         }
+         this.no = no;
+      }
+}
+   
+/* Subscriber class */
+class TestEvent
+{
+    public static void main(String []args)
+     {
+          Test test = new Test();
+          test.changed = new MyMessage();
+          test.setNo(100);
+          test.setNo(3000);
+      }
+}
+ 
+/* Create event handler */
+class MyMessage implements Message
+{ 
+    public void show(int o,int n)
+     {
+         System.out.println(o + " is replaced with " + n);
+     }
+}
+
+class Hello implements Message
+{
+   public void show(int oldValue, int newValue)
+    {
+         for(int i=oldValue;i<=newValue;i++)
+          {
+             System.out.println(i);
+           }
+   }
+
+
+
+}
+
+Understanding "How" method references are assigned to "v-table" (Pointer to method)?
+====================================================================
+interface Printer
+{
+   void print();
+}
+interface Screen
+{
+   void preview();
+}
+class Doc implements Printer, Screen
+{
+    public void create() { }
+    public void preview() { System.out.println("DOC Printing...");}
+    public void print(){
+      System.out.println("DOC Printing...");
+    }
+}
+class Excel implements Printer,Screen{
+  public void create() { }
+    public void preview() {System.out.println("Sheet :: Printing...");}
+    public void print(){
+      System.out.println("Sheet :: Printing...");
+    }
+}
+
+class Sample
+{
+    public static void main(String []args)
+     {
+           Doc doc = new Doc();
+
+       Printer p  = doc;  /* assign ref of doc.print to p.print */ 
+           p.print();
+           Screen s = doc; /* assign ref of doc.preview to s.preview */
+           s.preview(); 
+    s= new Excel(); /* assign ref of excel.preview to s.preview */
+           s.preview();
+      }
+}
+ 

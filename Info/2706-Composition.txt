@@ -1,0 +1,24 @@
+class Subject
+{
+    private String name;
+    private int totalMarks;
+}
+
+class Exam
+{
+    private String date;
+    private Subject subject;
+}
+
+class Student{
+    private int roll;
+    private String name;
+}
+
+class StudentExam{
+    private Student student;
+    private Exam exam;
+    private int obtainMarks;
+}
+
+    

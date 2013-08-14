@@ -1,0 +1,189 @@
+Object and Object Variable (Reference Variable)
+==========================================================
+
+
+ What is an Object (or Reference) variable?
+
+ ===========================================
+
+ It is just like a pointer in C/C++ language to
+ hold memory reference of an object.
+
+
+ In Java, we do not have "explicit Pointer" but
+ "Pointer" is implemented by Java Platform 
+ implicitly.
+
+ In C/C++, the size of pointer variable is 4 bytes and  similarly in Java, the size of reference variable or  object variable is "4 bytes".
+
+ How to declare/create reference variable?
+ ------------------------------------------
+
+  ClassName varName;
+             ^
+             |------------ This is called "reference"                            variable.
+
+  e.g
+
+     String name,city; // so name and city are two
+                       // reference variable.
+
+     Date a,b,c; // three reference variables
+
+
+  "name", "city", "a","b", and "c" are called "Reference or    Object variables" and each variable occupies 4 bytes.
+
+
+  Object (Heap)
+ ==================================
+
+  To understand the term 'object' or 'heap', we must have know-how of memory architecture that is used by different programming languages including C/C++/Java/C#/VB/PHP etc (nearly all languages)
+
+
+ Whenever we launch (run) the program, the OS or Platform (Java) will allocate and assign 1 MB RAM to the running application and this 1 MB MEMORY IS CALLED "STACK MEMORY" OR "STACK FRAME".
+
+ In Java, local variables, method parameters, method return  value and method calls uses "STACK MEMORY".
+
+
+ In case, if you need more memory (above 1MB) or you don't want to store data into "STACK FRAME" then use "new" keyword to allocate new memory region --- this region is called "OBJECT" or "HEAP FRAME".
+
+ The maximum size of "HEAP" (Or Object) is 2GB for 32 bit
+ machine and you can extends it up to 4GB in 64 bit  machine.
+
+
+ Example:
+
+
+class Date
+{
+   //fields
+   int d,m,y;
+}
+
+class TestMain
+{
+  public static void main(String []args)
+  {
+
+    Date a = new Date();
+    /*
+      The "new Date()" will returns memory reference of
+      heap/object to the reference variable "a".
+    */
+   
+    a.d = 10;
+    a.m = 3;
+    a.y = 2013;
+
+    Date b = new Date();
+
+    b.d = 11;
+    b.m = 4;
+    b.y = 2011;
+    
+ 
+    System.out.println(a.d + " " + a.m + " " + a.y);
+    System.out.println(b.d + " " + b.m + " " + b.y);
+   }
+}
+
+We've created two objects (two heaps) and referene of each heap is saved into ref variable "a" and "b".
+
+
+
+Object field initilization
+=========================================
+
+ Object fields of primitive types are automatically
+ initialized with ZERO-BASED value. 
+ ie. int,short,byte, long,float and double are initialized   with 0.
+
+  char is with '\0' (character null)
+
+  boolean is with false
+
+  And "reference" variable is with null.
+
+
+
+class Test
+{
+   int a;
+   byte b;
+   short c;
+   long d;
+   float p;
+   double q;
+   boolean y;
+   char x;
+
+   //reference variable
+   String name;
+}
+
+class TestMain
+{
+  public static void main(String []args)
+  {
+
+     Test a = new Test();
+     System.out.println(a.a + " " + a.b + " " + a.c 
+                + " " + a.d + " " + a.p + " " + a.q
+                + " " + a.y + " " + a.x + " " + a.name);
+    }
+}
+   
+
+Output the following
+=====================
+
+class Test
+{
+   int a;
+}
+
+class TestMain
+{
+  public static void main(String []args)
+  {
+
+     Test x = new Test();
+     Test y = x;
+   
+     x.a = 10;
+     y.a = 20;
+
+     System.out.println(x.a + " " + y.a);
+    }
+}
+  
+
+Output will be : 20 20
+
+Statement,
+
+   Test y = x; will copy the reference of an object but
+               not the copy of referenced object.
+
+
+Class members and naming conventions
+==================================================
+
+We should follow some naming conventions suggested by Java Platform to develop the new datatypes (classes).
+
+ 1. ClassName should be written as "PascalCase" -     Capitalize the first letter of each word.
+
+ 2. fields must be private and they are written in
+    "camelCase"
+
+ 3. Encapsulate the "fields" by adding public methods.         Especially, we will use "setter" and "getter" style
+    of methods.
+ 4. Method name should follows "camelCase" pattern.
+
+ 5. Add necessary "Constructors" to initialize the fields.
+
+
+
+    
+
+ 

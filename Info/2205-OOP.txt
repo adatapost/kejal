@@ -1,0 +1,395 @@
+Method return type and parameters (arguments)
+-------------------------------------------------------
+
+The "return type" of method describes that this method returns value of specified datatype to the caller method.
+
+Ex;
+
+class Test
+{
+  public int getNo()
+   {
+      return 10;  //or return (10);
+    }
+  public float getAmount()
+   {
+     return 10.10f;
+   }
+
+  public double getSquare(double no)
+   {
+     return no*no;
+   }
+
+  public void doPrint(int no)
+   {
+      for(int i=1;i<=no;i++)
+       {
+          System.out.println(i);
+       }
+    }
+}
+
+class TestMain
+{
+  public static void main(String []args)
+   {
+      Test a = new Test();
+      
+      int no=0;
+      no=a.getNo();
+
+      //no = a.getAmount(); --- float return type
+      float h = a.getAmount();
+  
+     // no=a.getSquare(5); -- double return type
+      double b = a.getSquare(3);
+
+      System.out.println(no + " " + h + " " + b);
+     // no=a.doPrint(5);  -- void return type
+        a.doPrint(5);
+    }
+}
+ 
+In this example, "main" is "calling/caller" method which requests (calls) the getAmount,getNo, getSquare and doPrint methods.
+
+    no = a.getNo(); 
+  
+         where getNo() is "called" method and it returns
+         10 that is assigned to "no" variable.
+    
+Why we returns value?
+----------------------------------------------------
+
+To obtain value from "called" method to "calling" method.
+
+
+
+How many value can be returns?
+------------------------------------------------------
+
+There must be one and only one value returns from the "called" method.
+
+
+
+What keyword should be used when we don't want to return data to calling method?
+--------------------------------------------------------
+
+The "void" keyword instruct the compiler that the method doesnot returns any data/value.
+
+
+What is the application of "parameters" or "arguments"?
+---------------------------------------------------------
+
+To send data/value from calling method to called method.
+
+
+  e.g
+
+     double square;
+     square = a.getSquare(5);
+                          ^
+                          |--- parameter
+
+There may be no or one or more parameters a method can have. 
+
+  e.g
+
+  returns the largest number of given three number:
+
+    int max(int no1,int no2,int no3)
+     {
+       ......
+      }
+
+    double max_double(double no1,double no2,double no3)
+     {
+       ......
+      }
+  
+    int div(int a,int b) {}
+
+Example : Date class to set/get and print date data
+
+
+class Date
+{
+   private int d,m,y;
+
+   public int getD() { return d;}
+   public int getM() { return m;}
+   public int getY() { return y;}
+
+   public void setD(int v) 
+   {
+     d = v;
+   }
+  public void setM(int v) 
+   {
+     m = v;
+   }
+  public void setY(int v) 
+   {
+     y = v;
+   }
+
+   public void set(int dv,int mv,int yv)
+   {
+      d=dv;
+      m=mv;
+      y=yv;
+    }
+   public void printIndia()
+   {
+      System.out.println(d + "-" + m + "-" + y);
+   }
+  public void printUsa()
+   {
+      System.out.println(m + "-" + d + "-" + y);
+   }
+}
+
+class DateTest
+{
+  public static void main(String []args)
+   {
+       Date date = new Date();
+       date.setD(5);
+       date.setM(2);
+       date.setY(2012);
+
+       System.out.println(date);
+
+       int k=date.getD();
+       System.out.println(k);
+
+      //or
+       System.out.println(date.getD() + "-" + date.getM() + "-" + date.getY());
+
+
+       Date bdate = new Date();
+       bdate.set(11,2,2015);
+       bdate.printIndia();
+       bdate.printUsa();
+       date.printIndia();
+    }
+}
+  
+
+
+Example : Modify the Date class with foll methods:
+
+
+
+ public boolean isValidMonth()
+  {
+     return m>=1 && m<=12;
+   }
+  public boolean isValidYear()
+  {
+     return y>=1900 && y<=2099;
+   }
+  public boolean isLeap()
+   {
+     return y%4 ==0;
+   }
+
+  public boolean days31()
+   {
+    if(m ==1 | m == 3 | m ==5 | m==7 
+             | m==8 | m==10 | m==12)
+         {
+           return d>=1 && d<=31;  
+          }
+      return false;
+    }
+  public boolean days30()
+   {
+    if(m ==4 | m == 6 | m ==9 | m==11 )
+         {
+           return d>=1 && d<=30;  
+          }
+      return false;
+    }
+  public boolean days28()
+   {
+    if(m==2 && isLeap())
+         {
+           return d>=1 && d<=29;  
+          }
+   if(m==2 && !isLeap())
+         {
+           return d>=1 && d<=28;  
+          }
+      
+      return false;
+    }
+
+  public boolean isValid()
+   {
+       if(!isValidMonth())
+           return false;
+
+       if(!isValidYear())
+           return false;
+      
+        if(days31())
+           return true;
+        if(days30())
+           return true;
+        if(days28())
+           return true;
+
+        return false;   
+    }
+
+and add following code in main method:
+
+       Date date = new Date();
+       date.setD(5);
+       date.setM(22);
+       date.setY(2012);
+
+       Date bdate = new Date();
+       bdate.set(31,12,2015);
+        
+       if(!bdate.isValid())
+         System.out.println("In Valid");
+       else
+          bdate.printIndia();
+
+        System.out.println(date.isValid());
+
+        if(!date.isValid())
+         {
+            if(!date.isValidYear())
+              {
+                 System.out.println("Invalid year");
+               }
+            if(!date.isValidMonth())
+              {
+                System.out.println("Invalid month");
+              }
+            System.out.println("or invalid day range");
+           }
+
+Example: Add "nextDate" and "previousDate" methods in Date class.
+
+
+public void nextDate()
+{
+  //
+ }
+public void previousDate()
+{
+  //
+}
+
+
+and write following code in main method:
+
+  Date date = new Date();
+  date.set(11,2,2002);
+
+   if(date.isValid())
+    {
+      date.nextDate();
+      date.printIndia(); 
+     }
+
+
+Example: Add "addDays(int days)" method in Date class:
+
+
+public void addDays(int days)
+{
+   if(days>0)
+    {
+        for(int i=1;i<=days;i++)
+          {
+               nextDate();
+           }
+     }
+   else
+   if(days<0)
+     {
+          for(int i=days;i<0;i++)
+           {
+               previousDate();
+            }
+     }
+}
+
+and code in main method:
+
+  Date date = new Date();
+  date.set(12,3,2002);
+
+  if(date.isValid())
+   {
+     date.addDays(200); //or date.addDays(-200);
+     date.printIndia();
+    }
+
+
+
+
+
+Example: MyNumber
+
+
+class MyNumber
+{
+
+   private int no;
+
+   public int getNo() { return no;}
+   public void setNo(int v) { no=v;}
+
+    
+   public boolean isOdd() { return no%2!=0;}
+
+   public boolean isPrime()
+    {
+        for(int i=2;i<=no/2;i++)
+          {
+             if(no%i==0)
+                  return false;
+           }
+         return true;
+     } 
+   public boolean isPerfect()
+    {
+     return false;
+     }
+  
+   public boolean isPalindrome()
+   {
+     return false;
+    }
+  public int reverse()
+    {
+          return 0;
+     }
+  public void printFactorial()
+   {
+     int f=1;
+     for(int i=1;i<=no;i++)
+        {
+          f=f * i;
+         }
+     System.out.println(f);
+    }
+  public void printFebonacy()
+   {
+      int a=0,b=1,c;
+
+        for(int i=1;i<=no;i++)
+         {
+            c= a+b;
+            System.out.println(c);
+            a=b;
+            b=c;
+           }
+      }
+}

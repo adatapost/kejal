@@ -1,0 +1,221 @@
+Java program that defines "Student" class with two fields namely "roll" and "name".
+
+class Student
+{
+   int roll;
+   String name;
+}
+
+class StudentMain
+{
+  public static void main(String []args)
+   {
+ 
+     Student std = new Student();
+     
+     std.roll = -19;
+     std.name =null;
+     }
+}
+
+In this example, "StudentMain" class is called "user" of "Student" class and you can see, the user can assign "improper" or "illegal" value to the "memory/heap/object".
+
+May be incorrect data will corrupt the object and might be program terminates abruptly.
+
+
+To address this problem, Java has "four" access modifiers - private, protected, package-level private and public.
+
+So in Student class we'have to "hide" the roll and name so user cannot access them directly.
+
+e.g
+
+ class Student
+  {
+     private int roll;
+     private String name;
+   }
+
+ This kind of behavior is called "Data Abstraction". This  way you can "prevent" an object/heap/memory being modified
+ directly.
+ 
+ Further, we need to set or get fields value so we must have to add "setter" and "getter" public methods.
+
+ 
+
+ class Student
+ {
+    private int roll;
+    private String name;
+
+    //getter & setter
+
+    public void setRoll(int v)
+    {
+       if(v>=1 && v<=100)
+          {
+             roll = v;
+           }
+      }
+ 
+    public void setName(String v)
+       {
+           if(v == null)
+             {
+                return;
+              }
+
+            if(v.length()>=5 && v.length()<=40)
+               {
+                  name = v;
+                }
+          }
+
+     public int getRoll() { return roll;}
+     public String getName() { return name;}
+}
+
+
+class StudentMain
+{
+  public static void main(String []args)
+   {
+ 
+     Student std = new Student();
+     
+     std.setRoll(-90);
+     std.setName(null);
+
+     System.out.println(std.getRoll() + " " + std.getName());
+
+     }
+}
+
+setter/getter Syntax:
+  
+      set[Capitalize_First_Letter_Of_Field]restName
+      get[--do--]
+  
+    
+               
+
+
+ Data Encapsulation
+------------------
+The setter and getter methods protect the "object" by adding validation code and allow 'single-point' access to update fields and return value from fields. 
+
+
+
+Example : Date class has three fields namely 'day','month' and 'year'.
+
+public class Date
+{
+   private int day,month, year;
+
+   public void setDay(int v) { day = v; }
+   public void setMonth(int v) { month = v; }
+   public void setYear(int v) { year = v; }
+
+   public int getDay() { 
+     return day;
+      
+   }
+   public int getMonth() { return month;}
+   public int getYear() { return year;}
+}
+
+public class TestDate
+{
+  public static void main(String []args)
+   {
+      Date date = new Date();
+
+      date.setDay(3);
+      date.setMonth(5);
+      date.setYear(2012);
+
+      System.out.println(date.getDay() + "-" + date.getMonth() + "-" + date.getYear());
+    }
+}
+    
+Example: add following methods into Date class
+
+ public boolean isLeap() {}
+ public boolean isValid() {}
+ public void set(int mday, int mmonth, int myear) {}
+
+and code in main method:
+
+   Date date = new Date();
+   date.set(31,12,2002);
+
+   if(date.isLeap())
+      {
+        System.out.println(date.getYear() + " is leap year");
+       }
+
+    if(date.isValid())
+        {
+          System.out.println("It is valid");
+         }
+    else
+       {
+          System.out.println("Invalid");
+        }
+
+
+
+
+Example : Define the "MyNumber" class has integer field called "no".
+
+  1. add setter/getter
+  2. boolean isOdd()
+  3. boolean isPrime()
+  4. boolean isPerfect()
+  5. boolean isPalindrome()
+  6. int reverse()
+  7. void printFactorial()
+  8. void printFebonacy()
+
+
+Example: Define class "Student" with,
+
+public class Student
+{
+   private int roll;
+   private String name;
+   private int eng,math,sci,guj,hindi;
+
+   //1. setter & getter
+   //2. int getTotal()
+   //3. double getPercent()
+   //4. String getGrade()
+   //5. String getStatus() -- ATKT, PASS, or FAIL
+}
+
+
+
+
+ MyNumber n = new MyNumber();
+ n.setNo(10);
+
+ if(n.isPrime())
+   {
+   //
+    }
+ else
+   {
+   //
+    }
+
+ System.out.println(n.isPrime());
+
+
+ n.setNo(4567);
+ int m = n.reverse();
+
+
+
+
+
+
+

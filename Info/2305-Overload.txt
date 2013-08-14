@@ -1,0 +1,225 @@
+Overloaded methods  Or Method Overloading
+=====================================================
+
+This is "compiler's" feature to create same named "methods".
+
+The Java Compiler makes call-arrangment as per method parameters order, datatype of same named method.
+
+ie. Methods having "common" name but unique parameters/arguments are called "Overloaded Methods".
+
+for example,
+
+class Test
+{
+   public void print()
+    {
+        System.out.println("No argument method");
+    }
+   public void print(char ch)
+    {
+        System.out.println("char argument method");
+    }
+   public void print(int n)
+   {
+        System.out.println("int argument method");
+    }
+   public void print(int n,int m)
+    {
+        System.out.println("Two int argument method");
+     }
+}
+
+class TestMain
+{
+   public static void main(String []args)
+    {
+        Test a=new Test();
+        a.print(10,20); // two int para method 
+        a.print(); // no arg method
+        a.print('A'); //char arg method
+        a.print(23); // single int para method
+      }
+ }
+
+
+
+
+When to choose method overloading?
+-------------------------------------------------
+The main goal to create "overloaded" method is to manage "method" names. i.e we dont want to create methods like print1, print2 or printInt, printChar etc.
+
+
+
+class Student
+{
+   private int roll;
+   private String name;
+
+   public void setRoll(int roll)
+    {
+       this.roll=roll;
+     }
+   public void setName(String name)
+     {
+        this.name = name;
+      }
+   public int getRoll()
+    {
+      return this.roll;
+     }
+   public String getName()
+     {
+      return name;
+      }
+   
+    //Some overloaded methods
+
+    public void set(int roll,String name)
+     {
+        this.roll = roll;
+        this.name = name;
+      }
+   public void set(String mname,int mroll)
+     {
+        roll = mroll;
+        name = mname;
+      }
+   public void set(String mname)
+     {
+        name = mname;
+      }
+   public void set(int mroll)
+     {
+        roll = mroll;
+      }
+}
+
+class StudentMain
+{
+  public static void main(String []args)
+   {
+
+     Student s=new Student();
+
+     s.set(10,"Rajesh");
+
+     Student t=new Student();
+     t.set("Mohan",20);
+
+     Student h=new Student();
+     h.set("Mohan Kumar");
+
+     //print roll and name of all objects
+     System.out.println(s.getRoll() + " " + s.getName());
+     .....
+    }
+}
+
+So in this example, we've added "four" methods to enhance the datatype and make it more intutive & user-friendly.
+
+
+
+Note:
+
+   The System.out.print and println are overloaded methods,
+
+      System.out.println(10); //int para
+      System.out.println(10.10);// double para
+                               [See documentation]
+
+
+
+
+Ex: Create overloaded methods to set 
+
+    class Emp
+     {
+         private int code;
+         private String name;
+         private double salary;
+         ....
+         //overloaded "set" method
+
+         public void set() {}
+         public void set(int code) {}
+         public void set(String name) {}
+         public void set(double salary) {}
+         public void set(int code,String name) {} 
+         public void set(int code,double salary) {}
+         public void set(String name,int code) {}
+         public void set(double salary,int code,String name) {}
+
+      }
+
+
+Overloaded method parameters type conversion
+----------------------------------------------------
+The compiler uses :
+
+    1. First of all it checks exact parameter datatype
+    2. If exact parameter datatype is not found then it
+       uses implicit type conversion.
+    3. If implicit conversion is not available then it
+       convert them to super-class object reference or        "java.lang.Object".
+
+
+ 
+class Test
+{
+   public void print(int n)
+   {
+        System.out.println("int argument method");
+    }
+ 
+   public void print(double n)
+   {
+        System.out.println("double argument method");
+    }
+ public void print(Object n)
+   {
+        System.out.println("java.lang.Object argument method");
+    }
+}
+
+class TestMain
+{
+   public static void main(String []args)
+    {
+        Test a=new Test();
+        a.print('A'); //compiler will select int para
+        a.print(10.10f); //                  double para
+        a.print("Hello");//                  object para
+                         // because exact type param is not                          // found
+      }
+ }
+
+
+Polymorphism
+=======================================================
+
+The meaning of "Polymorphism" is an entity has multiple forms.
+
+
+We've learn "Overloaded" method in which "common" method name has number of "forms or different definitions".
+
+That's why "Method-overloading" is called "Polymorphism".
+
+
+In Java, we've following ways to achieve polymorphism:
+
+1.  By creating "Overloaded" methods and this kind of
+    polymorphism is called "Static-Binding" or     "static-polymorphism" because "method's" call is     arrange by the "compiler".
+
+2.  By sub-classing (Inheritance) and creating "overriding"
+    methods.
+
+3.  By implementing the "Interfaces".
+
+    Sub-classing and implementation of "Interfaces" kind of
+    polymorphism is called "dynamic-binding".
+
+
+
+
+
+ 

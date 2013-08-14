@@ -1,0 +1,236 @@
+Primary class
+==============================================
+
+
+ What is class?
+ ========================
+
+  The "class" is synonym of "datatype".
+
+
+
+  The "class" keyword in Java is used to create new   datatype.
+
+
+  
+ Content of class
+ ==========================
+
+  A "class" definition includes :
+
+     1. instance fields (data members)
+     2. instance methods (member functions)
+     3. static fields
+     4. static methods
+     5. instance blocks
+     6. static blocks
+     7. constructors
+     8. nested types (class, interface, and enum)
+
+ What is "primary" class?
+ ========================
+
+  A class having "public static void main(String []args)"
+    method definition is called "primary class".
+
+  The Java Virtual Machine (JVM) tool --- java.exe can only
+  launch the "primary class".
+
+
+  The main() method is called entry-point method because it
+  is the instruction for JVM to set start-point of  code   execution.
+
+  The syntax of main() must be:
+
+
+class ClassName
+{
+
+
+
+
+
+  public static void main(String []args) { ... }
+  Or
+  public static void main(String args[]) { ....}
+}
+
+Example - 1  Create one or more "Primary classes"
+========================================================
+
+public class First
+{
+  public static void main(String []args)
+   {
+      System.out.println("Hello, World");
+    }
+}
+class FirstOne
+{
+  public static void main(String []args)
+   {
+      System.out.println("Hi");
+    }
+}
+
+To compile,
+>javac First.java
+
+To launch First and FirstOne
+>java First
+>java FirstOne
+
+
+In this sample, two classes from "java.lang" are used:
+  1. System is name of class
+  2. out is reference variable
+  3. println is method name
+  4. String is class 
+  5. Parameter of main() is called "Command Line                                     argument/parameter".
+
+Example - 2 Local variables and initialization
+=====================================================
+
+
+Variable declared inside the method body, and at method parameters are called "Local" variables.
+
+Local or auto variables are created when a method is called and they are released when the method is terminated.
+
+
+ e.g
+
+   void methodName(int param1,float param2)
+      {                 ^           ^
+                        |-----------|------ method                                     ^       parameters
+         int age;     <---|         | 
+         String name; <---|---- These are local vars.
+
+       }
+
+ What is "Declaration"?
+    It is an instruction to the "compiler" about
+    datatype and name of variables/methods/classes etc.
+
+
+Ex:
+
+public class LocalVar
+{
+  public static void main(String []args)
+    {
+       int age = 10;
+
+       System.out.println(age);
+
+       String name;
+
+       name = "Raj";
+
+       System.out.println(name);
+ 
+     }
+
+     
+}
+
+
+
+Local variables are not initialized automatically
+==================================================
+
+Local variable must be assigned / initialize before
+you use it.
+
+public class LocalVar
+{
+  public static void main(String []args)
+    {
+        int no;
+
+        System.out.println(no); <-- This will gives an 
+                                    error --- no is not
+       }                                    initialized.
+}
+
+
+Literals/Constants to initialize the variables
+===========================================
+
+ 10
+ 1.2
+ true
+ "Hello" are example of constants/literals and they are used to initialize variables of different datatypes.
+
+
+Integer literal
+================
+ You can assign decimal, hexa-decimal, octal value like:
+ 
+  1200
+  -100
+  0xFF (hexa)
+  012   (octal)
+
+ These constant can be assigned to "byte","short" and "int"  variables.
+
+Long literal
+================
+
+ Use "L" or "l" suffix to denote long constants.
+
+  10L
+  100000000000L
+
+Double literal
+==================
+Number with decimal point is considered as double datatype
+
+1.2
+19999992.32
+
+float literal
+===================
+Use "F" or "f" suffix to denote float literal
+
+1.2  <--- This is double literal
+1.2f <-- this is float literal
+
+boolean literal
+======================
+Use false or true in lowercase letter.
+
+ boolean married = true;
+ boolean isPassed = false;
+
+character literal
+=========================
+Single character denoted with single quote is called
+character literal.
+
+ 'a'
+ '2'
+ '+'
+ '@'
+
+String literal
+============================
+Value enclosed in double quotes is called "string" literal.
+
+"10.10"
+"Hello"
+ 
+
+Ex:  Multiply large long constant
+
+public class LocalVar
+{
+  public static void main(String []args)
+    {
+         
+          long sq = 100000000L * 100000000L;
+
+          System.out.println(sq);
+ 
+     }
+}
+

@@ -1,0 +1,148 @@
+Exception Handling in Java
+=====================================================================
+
+What is an "Exception"? (Definition)
+--------------------------------------
+
+  Abnormal condition arise in a code that might "disruppt" the program execution or produce "invalid" result is known as "Exception".   
+
+    To store 1000 value to person's age is called "Exception".
+
+      int age = 1000; <--- Not possible ?
+
+ In Java, the "Exception" system is just like a message system where an "exception' in one method or location can be reported to another method or location and so on.
+
+
+The Java language has following keywords to create, throws and handle the exceptions:
+
+  1. try
+  2. catch
+  3. finally
+  4. throws
+  5. throw
+
+and the Java API has following classes to architecture the Exception messages or description.
+
+ 1. java.lang.Throwable   -- It is super class of all "Exception"
+			     in Java.
+
+ 2. java.lang.Error 
+ 3. java.lang.Exception
+ 4. java.lang.RuntimeException
+
+
+Types of Exceptions
+================================================================
+
+There are three types of "Exceptions":
+
+  1. Error "exceptions" --- These types of "exception" cannot be                             recovered and handled and your program
+			    will be terminated abruptly.
+                        --- These types of exceptions have "Error"
+			    suffix.
+
+                          e.g ClassDefNotFoundError
+  2. Checked Exception  --- These types of "exceptions" are reported
+			    during compilation and runtime and they are
+			    sub-classes of java.lang.Exception.
+
+  3. Unchecked Exception  -- These types of "exceptions" are only
+      	or		 	reported at the time of execution.
+     RuntimeException           The sub-classes of 				java.lang.RuntimeException are example 				of runtime or unchecked exception.      
+   	
+
+
+Keywords
+=====================
+
+1. throw   : It throws an object of "Throwable".
+
+2. catch   : It catches thrown object either from another method's
+		try block or same method's try block.
+
+3. try 	   : In try block, we can create new exception and throws it.
+
+4. finally : finally block statement must be executed even an exception
+		is occured or not.
+
+5. throws  : It is used with method definition and it instructs the user of that method about exceptions which will be thrown by this method.
+
+           : It is mandatory for "checked" exception.
+
+	 
+class Emp
+{
+   private int age;
+
+    public Emp(int age) throws Exception  <--- re-throws 
+    {
+       //create and throws an exception
+       if(age<16)
+          throw  new Exception("Person is minor.");
+       if(age>60)
+          throw  new Exception("It is time for retirement.");
+
+       this.age = age;
+     }
+}
+
+class MainTest
+{
+  public static void main(String []args)
+   {
+       try{
+          Emp emp = new Emp(40);
+          System.out.println("OK");
+       }catch(Exception ex){
+           System.out.println(ex); //.toString()
+           System.out.println(ex.getMessage());
+            //print stack trace -- log
+             ex.printStackTrace();
+       }
+      System.out.println("...End of main...");
+    }
+}
+
+User-defined exceptions
+===================================================================
+In Java platform, exception classes you'll see & learn address the category or purpose of "Exception".
+
+   for example,
+
+      java.lang.ArithmeticException address the exceptions regarding to 		maths operations.
+
+      java.io.FileNotFoundException describe that file is not exists.
+
+In short the class name is itself a description of exception.
+
+
+To create user-defined exception, we will sub-class the "Exception" or "RuntimeException" and adding two or more constructors.
+
+
+class MathException extends Exception
+{
+    public MathException()
+     {
+          super("Something is wrong");
+      }
+    public MathException(String msg){
+           super(msg);
+    }
+}
+class MyMath
+{
+    public static double div(double no1, double no2) 
+	 				throws MathException {
+        if(no2 == 0)
+            throw new MathException("Divisor cannot be ZERO.");
+        return no1 / no2;
+     }
+}
+class MainApp{
+  public static void main(String []args){
+     try{
+         double value = MyMath.div(10,0);
+     }catch(Exception ex /* or MathException */){
+        System.out.println(ex);
+     }
+}

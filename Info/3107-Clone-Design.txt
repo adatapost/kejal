@@ -1,0 +1,97 @@
+How to create "clone" of object manually?
+=====================================================================
+
+The purpose of this approach to create new object by copying all fields data into newly created object.
+
+
+class Student {
+	private int no;
+	private String name;
+        ....... getter/setters
+	public Student myClone()
+	{
+               //Create new object and assign value from existing
+	       //object
+               Student temp=new Student(no,name);
+		 
+		return temp;
+	}
+}
+
+And in main(), you can create number of clone objects:
+
+  Student jigar = new Student(10,"Jigar");
+
+  //now we want to create 10 clone of "jigar" 
+
+  for(int i=1;i<=10;i++)
+   {
+       Student c = jigar.myClone();
+       System.out.println(c);
+    }
+
+Ex:
+package in.abc;
+
+class Student {
+	private int no;
+	private String name;
+
+	public Student myClone()
+	{
+		Student temp=new Student(no,name);
+		 
+		return temp;
+	}
+	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [no=" + no + ", name=" + name + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Student(int no, String name) {
+		super();
+		this.no = no;
+		this.name = name;
+	}
+
+}
+
+public class TestClone {
+
+	public static void main(String[] args) {
+      Student jigar = new Student(10,"Jigar");
+      Student bipin = new Student(20,"Bipin Patel");
+      
+      Student s1= jigar.myClone();
+      Student s2= jigar.myClone();
+      
+      Student t1 = bipin.myClone();
+      
+      System.out.println(s1);
+      System.out.println(s2);
+      System.out.println(t1);
+	}
+
+}

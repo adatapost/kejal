@@ -1,0 +1,163 @@
+Inheritance
+=====================================================================
+
+What is "Inheritance"?
+
+  => It is OOP technique to set "is" relationship between two classes.
+  
+     Or It is the only way to set relationship between two classes
+        and this type of relationship is called "Inheritance         RelationShip".
+
+
+  => If we want to create a new class which is exactly the existing      class  then we'll use "Inheritance".
+
+     Why "inheritance" technique is used or what is "importance" of it?
+     --------------------
+
+         The meaning of "Inheritance" is
+
+               "Create a new class of an existing class".
+
+           In foll example, consider the "Language" is existing class
+           and we're creating "Hindi", "Gujarati", "English" etc            classes using "Language" class.
+                          |------------------Existing classes
+                          V
+              English is Language
+              Gujarati is Language
+              Kathiawadi is Gujarati
+                ^
+                |--------- new classes however they are "Language"                            classes.
+
+            
+        In general, existing classes are called "super" or "base" classes where as new classes are called "Sub-classes" or "derived-classes".
+
+        
+        Why this technique is used?
+
+        In programming, there are some coding works too tedius and laboursome and it takes lots of time, power and money so these kind of works are defined into a very special class called "Infrastructure" or "Super" class and later developers can create "new classes (sub-classes)" using this "super" class.
+
+      For example,
+          In java, we've number of "Infrastructure classes" especially,
+           java.lang.Object --- which provide "threading","reflection"             and other complex programming code in custom classes without            re-write the code.
+
+           Another example, if you want to create a "Window Form", in java we've javax.swing.JFrame and if we wish to create an "Applet" then we will extends javax.swing.JApplet classes.
+ 
+
+General Syntax to create inheritance relationship
+===================================================
+
+access_modifier class ClassName  extends SuperClassName
+{
+  //
+}
+
+if "extends" is not used then the Java compiler insert "extends java.lang.Object" -- it means super class of your class will be java.lang.Object.
+
+e.g
+
+ class A {}  
+ 
+  is equivalent to,
+
+ class A extends Object {}
+
+
+Infrastructure classes must be treated as "super" classes. Consider the following examples:
+
+class Student {}
+class PrimaryStudent extends Student{}
+class CollegeStudent extends Student{}
+
+class Question {}
+class MCQ extends Question {}
+class SCQ extends Question {}
+class Blank extends Question {}
+
+
+class Hardware
+class Input extends Hardware{}
+class Output extends Hardware{}
+class Mouse extends Input {}
+class Monitor extends Output{}
+
+
+class Media {}
+class Image extends Media {}
+class Video extends Media {}
+class Audio extends Media {}
+class Gif extends Image {}
+
+Understanding the super and sub class objects --- Boxing and Unboxing
+----------------------------------------------------------------------
+
+
+class A
+{
+   int a;
+}
+class B extends A
+{
+   int a;
+}
+class C extends B
+{
+   int a;
+}
+class Objs
+{
+   public static void main(String []args)
+    {
+       C c = new C();
+
+        c.a  = 10;
+
+        //Boxing
+        B x = c;
+        A y = c;
+        x.a = 20;
+        y.a = 90;
+        System.out.println(c.a + " " + x.a + " " + y.a);
+     }
+}
+
+
+In Inheritance, when we create an object of "Sub-class", the JVM will create instances of all super-classes.
+
+   C c = new C(); // will create four objects and returns memory                      reference of "C" class object.
+
+
+   Object o = new C(); // will create four object and returns memory
+                           reference of "Object" class object.
+
+   A x = new C();   //will create four objects but returns memory ref
+                      of "A" class object
+
+   B y = new C();  // will create four objects but returns memory ref                       of  "B" class object.
+
+  These kind of events called "Boxing" ---- Super class reference variable can hold memory reference from "sub-class" object.
+
+
+  C c = new C();
+  Object a = c;
+  B b = c;
+
+
+  A x = new C();
+  C p = x;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                                  

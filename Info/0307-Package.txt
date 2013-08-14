@@ -1,0 +1,89 @@
+package statement
+================================================
+
+What is "package"?
+
+ It is technique to create a group of "TYPES" and keeps one group of "TYPES" distincts from another group.
+
+
+Fully qualified Types
+---------------------
+In Java, there is a strict rule, "Every TYPE must be created in named package". Never create a TYPE in default package.
+
+  What is Default package?
+  ------------------------
+
+  A type created without package statement will uses 
+  current folder name as package name.
+
+
+Following are example of fully qualified types:
+
+   java.lang.String <------- class
+    ^    ^
+    |    |----- sub-package
+
+    root 
+    package
+
+
+
+Example:
+
+TestMain.java
+------------------------------
+
+package in.kejal;
+
+public class TestMain
+{
+   public static void main(String []args)
+    {
+      System.out.println("This is from in.kejal.TestMain");
+     }
+}
+
+Important :
+
+  1. Package name must be in lowercase
+  2. Don't include numbers and other symbols in package      (Use only the alphabets)
+  3. Use . (period) to create sub-package or      sub-sub-package.
+  4. Package name is case-sensitive
+
+
+
+Ways to compile fully qualified types (package)
+-----------------------------------------------
+
+Method 1
+--------
+
+1. Create "in" folder
+2. create "kejal" folder inside the "in" (in/kejal)
+3. Create TestMain.java into "in/kejal/TestMain.java"
+4. Compile it
+5. Come out from the "in/kejal"
+6. Write following command from the parent of "in" folder
+
+   >java in.kejal.TestMain
+
+
+
+Method 2
+----------
+
+
+1. Create "TestMain.java" in current folder.
+
+2. Use following switches to compile the "TestMain.java"
+
+
+> javac  TestMain.java   -d   .
+
+  -d  switch will create package folders at . (current                                               folder)
+
+  Suppose, if we want to save in/kejal/TestMain.class at
+  c:\pqr folder then,
+
+    javac TestMain.java -d c:\pqr
+

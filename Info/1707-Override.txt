@@ -1,0 +1,108 @@
+Method "Overriding"
+======================================================
+
+  To replace or supersead the definition of super class method into its sub-class by creating same named, same access modifier, same parameters and same return type method is called "Method Overriding".
+
+  In some cases, where super class methods are no longer needed due to some reasons including --- 
+
+     1. We don't have trust in super class method
+     2. Super class method is not suitable to perform tasks
+     3. We wish to create "our" own implementation.
+
+Consider the following example,
+
+  class Base
+   {
+      public void first() { 
+          System.out.println("first");
+      }
+
+      public void second() { 
+          System.out.println("first");
+      }
+   }
+
+  class Der extends Base
+   {
+        
+    }
+
+
+
+  V-Table (Virtual Table)
+  =========================
+  When we create an object of "any" class, a virtual table will be   created to store method references.
+
+  Der d = new Der();
+  
+  so , v-table will be:
+  ----------------------------------
+  | pointer	- address of method|
+  | var          |                 |
+  |--------------------------------|
+  | first        | Base.first()
+  | second       | Base.second()   |
+  |--------------------------------|
+
+  d.first();
+  d.second();
+
+ Conside, if "first()" and "second()" methods are re-defined in "Der"   class.
+
+  class Der extends Base
+   {
+      public void first(){
+              Sytem.out.println("first from Der");
+         }
+    public void firstOne(){
+              Sytem.out.println("firstOne from Der");
+         }
+     }
+
+    Now, creating an object of Der
+
+    Der d = new Der(); and v-table will be :
+
+----------------------------------
+  | pointer	- address of method|
+  | var          |                 |
+  |--------------------------------|
+  | first        | Der.first()
+  | second       | Base.second()   |
+  | firstOne     | Der.firstOne()  |
+  |--------------------------------|
+
+    d.first();
+    d.second();
+    
+
+    Base b = d;
+    b.first();    //Der.first()
+
+
+NOTE: 
+
+ 1. Method of super class which is defined using "final" cannot be
+    overridable (we cannot override "final" method)
+
+ e.g
+
+  class A
+   { 
+      public final void test() {}
+    }
+  class B extends A {
+     public void test() {} <----- ERROR
+   }
+
+  2. Class is defined with "final" modifier cannot be inherited. i.e      this class cannot have any sub-classes.
+
+  final class A {
+        ....
+   }
+  class B extends A  <----- ERROR
+   {}
+
+  
+
+   

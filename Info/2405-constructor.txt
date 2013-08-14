@@ -1,0 +1,310 @@
+Constructor methods
+======================================================
+
+The "constructor" is very special method of "class" which is called automatically when we creates an object of that class.
+
+
+Name of "constructor" method must be same as its class name.
+
+
+Do not specify return datatype with constructors.
+
+
+Constructors can be overloaded. ie. they have different parameters.
+
+The main objective or purpose of constructor is to assign or initialize the fields and also add start-up code.
+
+Constructors should be public.
+
+
+
+class Test
+{
+  
+   public Test()
+     {
+        System.out.println("No argument constructor");
+     }
+ 
+}
+class TestMain
+{
+   public static void main(String []args)
+    {
+        Test a=new Test();
+         new Test();
+
+     }
+}
+
+
+ In this example, we've two objects then 'constructor' will 
+ be called twice.
+
+
+
+How a constructor is choosen or selected?
+---------------------------------------
+ 
+class Test
+{
+  public Test(int n)
+   {
+      System.out.println("int Argument");   
+    }
+}
+ 
+In this sample, we've int argument constructor and we cannot write following statement:
+
+    Test a = new Test(); <--- Error, because there isn't
+                              Test() (no argument) 
+                              constructor in Test class.
+
+Of course, we must have to
+specify int value while creating an object:
+
+    Test a = new Test(12); <-- This is valid
+
+
+So, the constructor is selected by the parameters you've set while creating an object.  
+
+
+What will happen when we don't have constructors in class?
+----------------------------------------------------------
+
+class Student
+{
+   private int roll;
+   private String name;
+ 
+}
+  
+and code in main,
+
+   Student s=new Student();
+                         ^
+                         |------ it wont complaint because
+   Java compiler insert "empty" no-argument constructor in "Student" class if we hanvent added any constructor.
+
+
+The Java compiler will adds "empty" no argument constructor if class has no constructor definition.
+
+
+The "Java" compiler will not add an "empty" no-arg constructor if you've typed a constructor definition.
+
+
+Example : Constructors methods in "Student" class to initialize the fields:
+
+
+
+class Student
+{
+   private int roll;
+   private String name;
+ 
+   public int getRoll() { return roll;}
+   public String getName() { return name;}
+
+   //No argument constructor
+   public Student()
+   {
+      roll = 1;
+      name = ""; //empty
+    }
+   //Parameterized constructors
+   public Student(int roll,String name)
+     {
+        this.roll = roll;
+        this.name = name;
+      }
+  public Student(String name,int roll)
+     {
+        this.roll = roll;
+        this.name = name;
+      }
+
+
+}
+class TestMain
+{
+   public static void main(String []args)
+    {
+         Student s=new Student();
+         System.out.println(s.getRoll());
+         System.out.println(s.getName());
+
+         int m=10;
+         String n="AAA";
+         Student m=new Student(m,n);
+         System.out.println(m.getRoll() + " " + m.getName());
+
+         Student t;
+         t=new Student("Manish",23);
+        System.out.println(t.getRoll() + " " + t.getName());
+
+     }
+}
+
+
+Invoke the constructor of same class from another constructor 
+--------------------------------------------------
+
+To avoid code-duplication, we can invoke (call) constructor from within another constructor using "this" keyword.
+
+This is the "third" usage of "this" keyword.
+
+class Student
+{
+   private int roll;
+   private String name;
+
+   public Student(int roll,String name)
+   {
+      this.roll = roll>0 ? roll: 1;
+      this.name = name==null ? "" : name;
+    }
+   public Student() 
+    {
+        this(1,"");  //call the two arg constructor
+     }
+   public Student(String name,int roll)
+    {
+        this(roll,name);
+     }
+   //define getter and setter ...
+}
+class StudentMain
+{
+  as per previous example .
+
+ }
+
+Example : Student Marksheet
+
+
+class Student
+{
+   private int roll;
+   private String name;
+   private int eng,math,guj,hindi,sci;
+
+ 
+   public int getRoll() { return roll;}
+   public String getName() { return name;}
+   public int getEng() { return eng;}
+   public int getMath() { return math;}
+   public int getGuj() { return guj;}
+   public int getHindi() { return hindi;}
+   public int getSci() { return sci;}
+
+   public void setRoll(int roll) { this.roll = roll;}
+   public void setName(String name) { this.name = name;}
+   public void setEng(int eng) { this.eng=eng;}
+   public void setMath(int math) { this.math=math;}
+   public void setGuj(int guj) { this.guj=guj;}
+   public void setHindi(int hindi) { this.hindi=hindi;}
+   public void setSci(int sci) { this.sci=sci;}
+
+   public int getTotal() { return eng + math + guj + hindi + sci;}
+   
+   public double getPercent() { return getTotal()/5.0;}
+   public String getGrade()
+    {
+      double p = getPercent();
+      if(p>=70) return "A";
+      if(p>=60) return "B";
+      if(p>=50) return "C";
+      return "D";
+     }  
+     
+
+    public Student(int roll,String name)
+   {
+      this.roll = roll>0 ? roll: 1;
+      this.name = name==null ? "" : name;
+    }
+   public Student() 
+    {
+        this(1,"");  //call the two arg constructor
+     }
+   public Student(String name,int roll)
+    {
+        this(roll,name);
+     }
+
+
+    public void inputStudent()
+    {
+       java.util.Scanner sc=new java.util.Scanner(System.in);
+
+       System.out.print("Enter Roll :");
+       roll = sc.nextInt();
+       System.out.print("Enter Name :");
+       name = sc.next();
+
+       System.out.print("English :");
+       eng = sc.nextInt();
+       System.out.print("Maths :");
+       math = sc.nextInt();
+      System.out.print("Science :");
+       sci = sc.nextInt();
+      System.out.print("Hindi :");
+       hindi = sc.nextInt();
+      System.out.print("Gujrati :");
+       guj = sc.nextInt();
+      
+     }
+
+    public void printMarksheet()
+    {
+       System.out.printf("\nRoll       :%d",roll);
+       System.out.printf("\nName       :%s",name);
+       System.out.printf("\n-------Marks------------\n");
+       System.out.printf("\nEnglish    :%d",eng);
+       System.out.printf("\nMaths      :%d",math);
+       System.out.printf("\nScience    :%d",sci);
+       System.out.printf("\nGujarati   :%d",guj);
+       System.out.printf("\nHindi      :%d",hindi);
+       System.out.printf("\n-------Result-----------\n");
+       System.out.printf("\nTotal      :%d",getTotal());
+       System.out.printf("\nPercentage :%f",getPercent());
+       System.out.printf("\nGrade      :%s",getGrade());
+       
+     }
+}
+class StudentMark
+{
+   public static void main(String []args)
+    {
+        /* Student s=new Student(10,"Rajesh");
+         s.setEng(33);
+         s.setHindi(77); 
+         s.setGuj(55);
+         s.setMath(55);
+         s.setSci(77);  
+
+        Student s=new Student();
+        s.inputStudent();
+         System.out.println(s.getRoll());
+         System.out.println(s.getName());
+         System.out.println(s.getTotal() + " " 
+     + s.getPercent()   + " " + s.getGrade()); */
+
+
+        Student a=new Student();
+        a.inputStudent();
+        a.printMarksheet();
+      }
+}
+
+Classes:
+
+1. BankAccount
+2. Address
+3. Point (x and y)
+4. Rectangle (x,y, height and width)
+5. Customer
+6. Product (no,name,qty,rate, discount, net amount)
+7. School
+8. Teacher
+

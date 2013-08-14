@@ -1,0 +1,37 @@
+Singleton design pattern
+------------------------------------------------------------------
+In certain cases where we want to create "single" object of a class and different classes/methods can shared this object.
+
+
+Ex: We want that only once instance of "Database" will be created and shared throughout the application.
+
+class Database {
+	private String server;
+	private String username;
+	private String password;
+
+	private Database(){}
+	
+	//private static field
+	private static Database single; 
+	
+	//Singleton method
+	
+	public static Database getInstance()
+	{
+		if(single == null){
+			single = new Database();
+			single.server = "123.2.3.22";
+			single.username="scott";
+			single.password="tiger";
+		}
+		return single;
+	}
+       ....... other methods .......
+
+And code in main:
+
+   Database db = Database.getInstance();
+   System.out.println(db);
+   System.out.println(Database.getInstance().getUsername());
+   System.out.println(Database.getInstance());

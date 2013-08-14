@@ -1,0 +1,136 @@
+Interface data-type
+-------------------------------------------------------------------
+The "interface" type include "abstract" methods (methods without body) and constants (final fields) to seperate the "declaration" and "implementations".
+
+In C Language, we've to declared functions before we define them.
+  For example,
+
+  #include <stdio.h>
+
+  void doCalc(int a,int b); <----  abstract method or declaration
+
+  void doCalc(int a,int b){  <--- Implementation or definition
+     /* code */
+  }
+
+ Declaration offers two important services:
+
+   1. It allow us to store method references (function pointer)
+
+      Method reference of one method can be passed as parameter
+      to another method and we can invoke method by its reference.
+
+   2. To learn the behavior of "Class".
+
+      Or To understand the functionalities of class.
+
+      Or To define "protocols" or "rules" through with "classes" will
+	 be constructed.
+
+ Interface syntax
+ -----------------
+
+ access_modifier interface InterfaceName1 [ extends                        Interface2,Interface3, ....]
+  {
+    //abstract methods
+    //and final fields
+   }
+
+  All members of "Interface" are public and will be public.
+
+ To add implementation of interface
+ -----------------------------------------------
+ Interfaces are implemented by class.
+
+ access_modifier class ClassName [extends SuperClass
+                                  implements Interface1,interface2,..]
+  {
+    //
+   }
+
+e.g
+
+interface Actor
+{
+    void act(); // public abstract void act();
+}
+
+class HappyActor implements Actor
+{
+   @Override
+   public void act()
+   {
+     System.out.println("Happy acting");
+    }
+}
+class SadActor implements Actor
+{ 
+    @Override
+    public void act()
+   {
+     System.out.println("Sad acting");
+    }
+}   
+
+class TestMain
+{
+    static void play(Actor actor)
+     {
+          actor.act();
+     }
+     public static void main(String []args)
+     {
+          HappyActor shah=new HappyActor();
+          SadActor dilip = new SadActor();
+
+
+          //Assign act() reference to Actor.act 
+
+          //Interface reference variable
+          Actor a = shah; //HappyActor.act() reference
+          a.act();
+          a=dilip; //SadActor.act() reference
+          a.act();
+
+         //or you can pass object reference to "play()" method
+          play(dilip);
+          play(shah);
+          play(new HappyActor());
+       }
+ }
+ 
+ 
+Application of "interfaces"
+================================================================
+
+1. To instruct the Java Virtual Machine by creating "Marker" interface.
+   The "Marker interface" has no implementation.
+
+ e.g
+
+    interface Kejal{}
+    class Emp implements Kejal{}
+    ....
+
+   
+    Example to override "clone" method of Object class.
+
+    ==========================================================    
+    The "clone" method create a new copy of object of a class which 
+    have implemented the "java.lang.Cloneable" interface.
+
+
+
+2. To create "callback" methods Or we define event handling.
+
+   We can create some classes which "publishes" some sort of "events" and the "interface" will be used to set this mechanism.
+
+   In other words, event handling or callback is a mechinism to attach or detach "method" to/from another class.
+
+   In low-level languages, this system is known as "interrupts".
+
+
+  
+
+
+    

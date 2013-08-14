@@ -1,0 +1,280 @@
+01-05-2013
+
+
+1. Input integer number and test a number is prime or not.
+
+   A number is only divisible by 1 or itself is called    prime number.
+
+        e.g 
+             1 2 3 5 7 11 13 17 19 are prime numbers.
+
+
+2. Input integer number and test a number is perfect or
+   not.
+
+
+     e.g
+
+        sum of factor is equivalent to input number.
+
+        e.g
+
+          factor of 28 are 1 2 4 7 14 and
+
+            sum of factor = 1 + 2 + 4 + 7 + 14 = 28 so 28
+           is called perfect number.
+
+3.  Input integer number and test a number is armstrong or     not.
+
+      Sum of cube of each digit = given number.
+
+
+    e.g  153 
+
+          3    3    3
+         1  + 5  + 3  = 1 + 125 + 27  = 153 and it is                                         armstrong number.
+        
+4. Input integer number and test a number is "palindrome"     or not.
+
+
+      input number === its reverse number
+
+   e.g
+         135 = 531 and it is not palindrome
+
+         1991 = 1991  it is palindrome
+
+
+5. Input validate date (day,month, year) and days to be      added.
+
+   e.g
+
+     1 5 2013     days to be added 32
+                  so new date will be   2 6 2013
+
+Nested Loops
+=============================
+
+Loops inside another loop is called nested loop.
+
+
+For example, I wish to print,
+
+1  2  3  4
+
+then I've to use,
+
+   for(int b = 1; b< = 4; b++ )
+      {
+        System.out.print("  " + b); // no new line with                                     // spaces
+       }
+   System.out.println();
+
+
+   for(int b = 1; b< = 4; b++ )
+      {
+        System.out.print("  " + b); // no new line with                                     // spaces
+       }
+    System.out.println();
+
+   for(int b = 1; b< = 4; b++ )
+      {
+        System.out.print("  " + b); // no new line with                                     // spaces
+       }
+    System.out.println();
+
+   for(int b = 1; b< = 4; b++ )
+      {
+        System.out.print("  " + b); // no new line with                                     // spaces
+       }
+    System.out.println();
+
+but I want to repeat 1 2 3 4 four times,
+
+
+1 2 3 4 
+1 2
+
+So I'd think:
+
+  for( int a = 1; a<=4 ; a++ )
+    {
+
+      for( int b = 1; b<=4; b++ )
+         {
+
+            System.out.print("  " + a);
+         
+           }
+       System.out.println();
+    }
+         
+
+a   a <= 4   b   b <= 4
+
+1    T       1    T
+1    T       2    T
+1    T       3    T
+1    T       4    T
+1    T       5    F
+2    T       1    T
+2    T       2    T
+
+Program to show following output
+
+1 1 1 1
+2 2 2 2
+3 3 3 3
+4 4 4 4
+
+
+Program to show following output
+
+1   2  3  4
+5   6  7  8
+9  10 11 12
+13 14 15 16
+
+ 
+int c = 1;
+for( int a = 1; a<=4 ; a++ )
+    {
+
+      for( int b = 1; b<=4; b++ )
+         {
+
+            System.out.print("  " + c);
+            c++;
+         
+           }
+       System.out.println();
+    }
+
+
+ 
+Program to show following output
+
+1   2  3  4
+2   3  4  5
+3   4  5  6
+4   5  6  7
+
+for( int a = 1; a<=4 ; a++ )
+    {
+      int c = a;
+      for( int b = 1; b<=4; b++ )
+         {
+
+            System.out.print("  " + c);
+            c++;
+         
+           }
+       System.out.println();
+    }
+
+Program to show following output
+
+1   0  1  0
+0   1  0  1
+1   0  1  0
+0   1  0  1
+ 
+for( int a = 1; a<=4 ; a++ )
+    {
+      int c = a;
+      for( int b = 1; b<=4; b++ )
+         {
+
+            System.out.print("  " + (c%2));
+            c++;
+         
+           }
+       System.out.println();
+    }
+
+Program to show following output
+1
+1 2
+1 2 3
+1 2 3 4
+
+
+  for( int a = 1; a<=4 ; a++ )
+    {
+
+      for( int b = 1; b<=a; b++ )
+         {
+
+            System.out.print("  " + b);
+         
+           }
+       System.out.println();
+    }
+
+Program to show following output
+
+1
+2 2
+3 3 3
+4 4 4 4 
+
+Program to show following output
+1 
+2 3
+4 5 6
+7 8 9 10
+
+Program to show following output
+
+    1
+   2  2
+  3  3  3
+4  4   4  4
+ 
+xxx1
+xx2 2
+x3 3 3
+4 4 4 4 
+
+
+for( int a = 1; a<=4 ; a++ )
+    {
+      for( int s = a;s<=4;s++)
+        {
+          System.out.print(" ");
+         }  
+
+
+      for( int b = 1; b<=a; b++ )
+         {
+
+            System.out.print(a + " ");
+         
+           }
+       System.out.println();
+    }
+xxxx1x
+xxx2x2x
+xx3x3x3x
+x4x4x4x4x
+
+Program to show following output
+1111
+1001
+1001
+1111
+Program to show following output
+1
+121
+12321
+1234321
+
+
+Program to show following output
+         1
+      2  4  3
+   5  7  9  8  6
+10 12 14 16 15 13 11
+
+
+

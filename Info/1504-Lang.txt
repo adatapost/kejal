@@ -1,0 +1,185 @@
+Java Program and File structure (Continue)
+============================================================
+
+ The Java source code file contains three types of statements and these statements  must appear in following order:
+
+  1. package statement (It is optional)
+  2. import statement (It is optional)
+  3. Type/class definition
+
+
+The first statement must be "package" statement however in absence of "package" statement, the "import" statement can be very first statement of your source code.
+And in absense of "import" your class definition become first statement.
+
+What is "top-level" type?
+===========================
+
+ There are two types of "class" definitions:
+
+    1. Top-level Types --- which are not nested or created inside another type.
+
+    2. Nested or Inner Types ----- Which are created inside another type.
+
+
+
+For example,
+
+  class A  <-- Top-level or enclosing class
+   {
+       class B   <---- Nested/Inner or enclosed class
+              { }
+    }
+
+Modifiers
+============================================================================
+
+ Modifiers are Java Language keywords which modify the purpose and meaning of  programming entities (Class, Methods, Variables etc).
+
+
+  There are two types of modifiers
+  ==================================
+
+  1. Access Control Modifiers  Or Access control keywords
+        public, private, package-level private and protected are example of
+        "Access modifiers".
+  2. Storage modifiers
+        static, final, volatile, transient are example of "Storage" modifiers.
+
+
+  [Note: Modifiers are also known as "specifiers"]
+
+
+
+  Access Modifiers
+  =============================================================================
+
+   What are the applications of "Access" modifiers?
+      
+         In Object-Oriented Paradigm, an abstraction mechanism is achieved via
+         "Access Control" modifiers.
+
+          What is an "abstraction"?
+
+               It is programming technique to create a outline (boundary or wall)
+               between "creator" and "user" of the class/program.
+
+               The "creator" adds number of methods, fields (variables) but
+               she/he restrict the "user" of this type via "Access" modifiers
+               that the user can use only useful methods and fields.
+
+
+            for example, In C language, printf() function we've used is called
+               abstraction of "code which prints data onto the screen". We the                    user, never see what kind of code is written to print data on
+               screen and neither we interested to do so.
+       
+      NOTE: To hide something or to keep away "implementation" from user of the
+            TYPE/SYSTEM is called "abstraction".
+
+             int, float , char are example of "abstract datatype" - ADT.
+
+
+     In Java, we've four access modifiers which are used with different entities      including --- class, methods, fields, interface, enum etc.
+
+     Four Access Modifiers
+     ==========================
+
+     1. public   ----- The "public" entities have no access restrictions. They are
+                       visible everywhere.
+
+     2. private  ----- The "private" entities are only visible inside the "type"
+                        in which they are declared/defined. The "private" entities
+                        are not visible outside the containing type.
+
+     3.          ------ No named or unnamed access that is known as "package-                        level private". These "entities" are only visible inside
+                        the package/folder in which they are created/placed.
+
+     4. protected ------ The "protected" entities have similar access as                          "package-level private" but they are visible inside the
+                          sub-class which is created in another package.
+
+
+ 
+     Top-level types can have either "public" or "package-level private" access      and when "access modifier" is not given then "package-level private" will be      assumed.
+e.g
+
+   class A {} <---- it is "package-level private"  
+
+   public class B {} <---- It is public
+
+   private class C {} <----- Error : Top-level types cannot use private or                                      protected modifiers.
+   
+    Nested members can have following accessibilities as shown in table:
+
+
+    TYPE NAME		Default Access		We can change
+===============================================================================
+
+     class		package-level private	public, private, package-level
+						private, and protected
+
+     interface		public			Can't change
+ 
+     enum		public			public, private and package-level
+						private
+
+
+e.g
+class A
+{
+    int age; <------ package-level private
+                       |        |
+     void print() {} <-+        |
+                                |
+     class B <-------------------
+      {
+        }
+
+     public class C {}
+     private class D{
+          public int n;
+          private int m;
+
+          class E{}
+      }
+     private int no;
+}
+
+Storage Modifiers
+=======================================================================
+The "Storage" modifiers change the "storage" scope and behavior.
+
+1. static   ------ The "static" keyword can be used with 
+                     > fields to create "global" like variable which is alive
+                       (remains in memory) till an application is running.
+
+                     > methods to define "global" method which will be used
+                       without an instance of that class.
+
+                     > class to define "nested" non-member class.
+
+                     > block to create "static" initialization blocks.
+
+2. final  ------ The "final" keyword can be used with:
+
+                    > variables/fields to create constant --- Value once assigned
+                       cannot be changed.
+  
+                   > methods to define "not-overridable"
+
+                   > class to define "not-inheritable"
+
+3. volatile  ----- It is used to create such a variable whose value can be changed
+                   and notified two or more threads.
+
+4. transient  --- It is used to create such fields which have loose an ability to
+                  save the content into other medium such as disk file or network
+                  etc.
+
+                              
+
+     
+ 
+    
+   
+
+ 
+

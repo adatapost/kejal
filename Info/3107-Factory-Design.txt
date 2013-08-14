@@ -1,0 +1,36 @@
+Factory Design Pattern
+---------------------------------------------------------------------
+
+In certain cases where we dont allow user to create objects using "new" operator.( because may be object construction requires other objects or complex code).
+
+Here is an example, "How to create factory design pattern?"
+
+1. First of all, private your constructors
+2. Write down "static" method which returns an object.
+
+EX:
+
+ class Emp
+ {
+	 private int id;
+	 private String name;
+
+	 //private constructor 
+	 private Emp(){}
+	 /*Factory method*/
+	 public static Emp newInstance()
+	 {
+		 return new Emp();
+	 }
+        ....... other methods ........
+ }
+
+And code in main :
+
+     // Emp e1 = new Emp(); //Error - constructor is private
+
+	Emp e1 = Emp.newInstance();
+        System.out.println(e1);
+	e1.setId(10);  e1.setName("A");
+        System.out.println(e1);
+

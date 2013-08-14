@@ -1,0 +1,492 @@
+Escape characters
+======================================================
+Escape characters begins with \ and followed by a letter; is used as an instruction.
+
+  \a  -- audible bell
+  \n  -- new line
+  \r  -- carriage return/enter key
+  \b  -- backspace
+  \t  -- tab
+  \\  -- insert backslah
+  \"  -- insert double quotes 
+
+
+
+[NOTE: Add following code-snippet in main() method]
+
+
+       System.out.println("\nThis is\n\nanother new                            line");
+
+       System.out.print("\nNo\tName\t\tAge");
+       System.out.print("\n1\tRaj\t\t22");
+
+       System.out.println("\nABC\b\bR");
+ 
+       String path = "c:\tc\bin";
+
+       System.out.println(path); 
+
+       path = "c:\\tc\\bin";  //Unescape the chars
+       System.out.println(path); 
+
+       String name = "Raj is my \"best\" friend.";
+       System.out.println(name);
+
+
+
+System.out methods
+======================
+1. System.out.print   -- It prints data at cursor
+2. System.out.println -- It prints data at cursor and add
+			 a newline.
+3. System.out.printf   -- It prints formatted value where
+			  format contains %d %f %s 
+			  format modifiers.
+
+
+
+Example: printf() method
+
+       int no = 10;
+       String name = "Raj";
+
+       System.out.printf("\n%d  %s",no,name);
+
+       System.out.printf("\nMy name is %s and I'm                         %d years old",name,no);
+
+
+
+String concat operator +
+===========================
+
+To concat two strings or any value of any datatype to a string.
+
+  Syntax:
+
+              strVal1 +  strVal2;
+
+              strVal1 +  nonStrVal1;
+ 
+              nonStrVal1 + strVal1;
+
+       Note: String value is required either left or right              of + operator.
+
+             String concat operator convert non-string              datavalue into "string" datatype.
+
+Example:
+
+       int no = 10;
+       String name = "Raj";
+
+       System.out.println("My name is " + name + " and I'm " + no + " years old.");
+
+       int a = 5, b = 7;
+
+       System.out.println("Sum : " + a + b);
+       System.out.println("Sum : " + (a + b));
+
+
+Input/read value from console
+=========================================
+
+There are number of methods in Java to input/read value but we'll use java.util.Scanner class.
+
+
+   //Create an object of Scanner
+
+ java.util.Scanner scan = new java.util.Scanner(System.in);
+
+ System.out.print("Enter the age : ");
+ int age = scan.nextInt();
+
+ System.out.println("Your age is : " + age);
+
+
+Use scan.next() -- to input string
+    scan.nextFloat() -- to input float
+    scan.nextDouble() -- to input double
+      [See documentation for more methods]
+
+Ex:  input name (with or without whitespaces)
+
+System.out.print("Enter name : ");
+String name = scan.next(); //Without whitespace.
+                           //To include whitespace use
+                           //scan.nextLine()
+
+ System.out.println("Welcome : " + name);
+
+   
+Operators
+=====================================================
+Operators are methods associated with "primitive" and "wrapper" types to perform different operations on data.
+
+
+1. Arithmetic operators : + - / * %
+    Remainder (Modulo) operator in Java can be used with
+    float/double value.
+
+      e.g
+
+         System.out.println( 3.2 % 2); //prints 1.2
+2. Increment/decrement operators
+
+     1. Pre-increment ++var 
+        and 
+        pre-decrement --var
+
+      2. Post-increment var++
+         post-decrement var--
+
+       In both cases, this operators add or substract "1"        to or from variable.
+
+    ++ or -- operators are called "unarray" because it uses
+    single operand (variable).
+
+    + and - operator can be unary or binary:
+           
+            -5  <---- in this context, it is unarray
+           2 - 5 <--- in this context, it is binary
+
+   Example :
+
+
+      int a, b = 1;
+
+       a = b++;  //post increment
+
+       System.out.println(a + " " + b);
+  
+       b=1;
+       a= ++b;   //pre increment
+       System.out.println(a + " " + b);
+    
+
+/* 
+  Post Incr
+  ==========
+  a = b++   
+   is equivalent to
+
+  a = b;
+  b = b + 1
+
+
+  Pre Incr
+  ========
+  a = ++b;
+    is equal to
+
+  b = b + 1;
+  a = b;
+   
+ */
+
+
+Test the following:
+=======================
+
+1. 
+
+ b=1
+ a = b++ + b++ + b++;
+
+2. 
+
+ b=1
+ a=2
+ a = a++ + ++b + b++;
+
+3. 
+
+1. 
+
+ b=1
+ a = --b + b++ + b--;
+
+class Test
+{
+  public static void main(String []args)
+   {
+     int a,b;
+
+      b=1;
+      a = b++ + b++ + b++;
+      System.out.println(a +  "     " +  b);
+       System.out.println(a);
+       System.out.println(b);
+       System.out.printf("\n%d   %d",a,b);
+    }
+}
+
+
+Example: Post or Pre increment or decrement for single statement have no
+         difference.
+       
+
+class Test
+{
+  public static void main(String []args)
+   {
+      int n = 1;
+      n++;
+      System.out.println(n); //2
+      ++n;
+      System.out.println(n); // 3
+      n--;
+      System.out.println(n); // 2
+      --n;
+      System.out.println(n); // 1    
+  }
+}
+ 
+
+But if these operators used in an "expression -- contains two or more operations" then POST Incr/Decr will be performed after the execution of current "clause" and PRE Incr/Decr will be performed before the execution of current clause.
+
+
+Consider following example,
+
+class TestOne
+{
+  public static void main(String []args)
+   {
+     int a,b;
+
+     b = 3;
+    
+     a = b++ + b++;
+
+     System.out.println(a + "   " + b);
+    }
+}
+
+Dry run  (To run program steps in paper)
+==========================================
+
+a     b      b++ + b++
+=========================
+       3      3   +  4
+       4
+7       5
+
+Example:
+
+class TestTwo
+{
+  public static void main(String []args)
+   {
+     int a,b;
+
+      b=1;
+      a=2;
+
+      a = a++ + ++b + b++;
+
+     System.out.println(a + "   " + b);
+    }
+}
+
+Dry Run
+=================================
+a   b       a++   +    ++b    +   b++
+2   1        2    +    2      +   2
+3   2
+6   3
+
+
+3. Relational operators
+   To compare value of two operands, relational operators are used.
+
+    >(greater)  >=(greater or)   < (less)  <=(less or)   == (equal)   != (not                                                                      equal to) 
+
+    Relational expression always returns "true" or "false" -- boolean value and we     will learn its usage in "if", "switch", and "loops" (for, while, do while)     statements.
+
+class TestThree
+{
+  public static void main(String []args)
+   {
+      int no1 = 10,
+          no2 = 20;
+
+       boolean status = no1 > no2;
+       System.out.println(status); // prints false
+       System.out.println(no1 < no2); // true
+       System.out.println(no1 != no2); // true
+      }
+}
+
+4. Logical operators or boolean operatators
+   
+    Boolean/logical operators are used to create "compound" expression by adding     "or" ,"and" and "not" clauses.
+    1.  &&    or   &    ---- boolean and
+    2.  ||    or   |    ---- boolean or
+    3.  !               ---- boolean not
+
+
+Identifiers
+======================================================================
+The names of variables, methods, classes, interfaces, enums are called identifiers. In other words, user-defined names are called "identifiers".
+
+
+Reserved Words or Keywords
+=======================================================================
+Words which are provided by language and have fixed meaning and usage are called "Keywords" or "Reserved Words".
+
+Keywords must be written in lowercase (small) letter.
+
+Following are names of keywords:
+   public, private, protected, static, final, volatile, transient,
+   void, int, char, float, double, boolean, long, short, byte, if,
+   else, switch, case, break, continue, for, while, do, try, catch,
+   finally, class, interface, enum, package, import and many more......
+
+Naming rules of "Identifiers".
+=========================================================================
+
+ An identifier must follows these rules :
+
+    1. It must begins with an alphabet or underscore.
+
+          e.g
+               Hello <--- Valid
+               _no   <--- valid
+               1Hi   <---- invalid
+    2. It can not allow whitespace (space, newline, tab, enter etc).
+
+    3. It include A-Z, a-z, 0-9, _ and $ sign in the name.
+
+            Hello Application <---- Invalid (contains space)
+            no1  <---- valid
+            no+2  <---- invalid. It includes _ or $ as special character.
+            amount_due  <--- valid
+            first$application <--- valid
+    4. There is not restriction on length of identifiers.
+    5. Identifiers must be unique within the block.
+    6. It must not a keyword.
+
+              int for; <--- it is illegal because "for" is keyword.
+
+    
+
+Operator Precedence (Priority)
+=============================================================
+
+  int a=2,b=3;
+
+   int c = a + b * b;  // value of c will 11
+
+  The "precedence" determine which operator will be executed first in given   "expression".
+
+
+   Every operators has "precedence" index called "rank" and associativity.
+
+   The "rank" is number through which we can understand the "precedence" where as    an "associativity"  describes on what direction an expression is evaluted ---    left to right or right to left.
+
+      e.g
+
+           assignment operator = has right to left associativity.
+
+                          L   R
+                      int a = 4;
+                            <==
+
+              addition of two number has left to right associativity
+                         L => R
+                         a  + b
+
+
+
+Rank		Operators			Associativity
+===========================================================================
+1		()  parenthesis				L->R
+2		Unary operators				R->L
+		+
+		-
+		++
+		--
+3		Division (/), multiplay (*) and		L->R
+		remainder (%)
+
+4		Addition (+) and subtraction (-)	L->R
+
+5		Relational operators			L->R
+
+6		Logical Operators			L->R
+
+7		Assignment operator					
+		and shorthand operators			R->L
+		=, +=, -=. *=, /=, %=
+
+  
+ 
+   int a=2,b=3;
+
+   int c = (a + b) * b;  //15
+         =  5    * 3
+         = 15  
+
+ Ex:
+ 
+  int c = (a + (b + 2)) * b;
+        = (a +  5) * b;
+         = 7 * 3  
+         = 21
+
+ Ex: 
+
+   int a=2,b=3;
+
+    int c = -a + b * b;
+          = -2 + 9
+          = 7
+
+Ex: 
+
+   int c = -a + b * -b;
+         = -2 + 3 * -3
+         = -2 - 9 
+         = -11
+
+Ex:
+
+         2     3      2     3
+       a   - b      (a  - b)
+   x = ---------- x -------------
+              2        b - a
+         (a-b)     
+
+
+ int a= 2, b= 2;
+ 
+  x = ( a*a - b*b*b) / ( (a-b) * (a-b) ) * ( (a*a - b) *(a*a - b)*(a*a - b))/b-a
+
+
+Ex:               2
+             a - b  - 4ac
+    root =  ------------------
+                     2
+                (a-b)
+
+Ex: Find an interest of amount XXXXXX for xxx years where interest rate is 1.2     percentage per month.
+
+Ex: Calcuate bill amount of 340 units.
+   
+     Rs 1.5 per unit for first 100 units
+     Rs 2.5 per unit for next 125 units
+     Rs. 3.5 per unit for next 400 units.
+     Rs. 5 per unit for remaining units.
+
+Ex:  Reverse the 123 number to 321
+
+Ex:  Extract 3rd digit from 234563 value ( 3rd digit is 4)
+
+Ex: Multiplay first and last digit of 23456  ( 2 * 6 = 12)
+
+Ex:  p = x++  + x  +  y + ++y + x--;
+
+Ex:  q = x++ * ++y + (++x * y--);
+
+  
+
+
+   

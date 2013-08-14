@@ -1,0 +1,231 @@
+Access modifiers with super and sub-classes
+============================================
+
+class A
+{
+    private int a1;
+    protected int a2;
+    int a3;    /* page-level private */
+    public int a4;
+}
+
+class B extends A
+{
+    /* Access member of "A" into "B"
+
+     public void test()
+      {
+         a1 = 10;  // Error cannot access private member of super
+       
+         a2 = 10;  // Protected are accessible
+ 
+         a3 = 10;  // package level are accessible
+
+         a4 = 10;  // public are accessible
+      }
+
+      private int b1;
+      protected int b2;
+      int b3;
+      public int b4;
+}
+
+class TestTheAccess
+{
+    public static void main(String []args)
+     {
+       /* Access the members of "A" class via object of B class */
+
+       B b = new B();
+
+       // b.a1 = 1; can't access
+       // b.a2 = 1; can't access
+       b.a3 = 1; //OK
+       b.a4 = 1; //OK
+
+       /* Access the members of "B" class via object of B class */
+
+       // b.b1 = 1; can't access
+       // b.b2 = 1; can't access
+          b.b3 = 1; //OK
+          b.b4 = 1; //OK
+       }
+}
+     
+Constructors in super & sub classes
+======================================================
+Constructor of "super" class will be called before the execution of sub-class constructor. By default "no" argument constructor will be selected of the "super-classes".
+
+
+class A
+{ 
+   public A(){
+      System.out.println("A::NoArg");
+    }
+   public A(int n){
+      System.out.println("A::IntArg");
+    }
+}
+class B extends A
+{
+    public B(){
+      System.out.println("B::NoArg");
+    }
+   public B(int n){
+      System.out.println("B::IntArg");
+    }
+   
+   public B(String n){
+      System.out.println("B::StrArg");
+    }
+}
+
+class TestTheConstructor
+{
+   public static void main(String []args)
+     {
+        B b1 = new B();
+        B b2 = new B(10);
+        B b3 = new B("Hello");
+     }
+}
+
+
+
+Question : What will happen if class "A" has int-argument constructor only. --- In this case we can't compile the classes.
+
+Solution : 
+
+         We've to use "super" variable/keyword to select appropriate
+         constructor of super class from within the sub-class          constructor.
+
+ Syntax:
+
+       public SubClassConstructor()  
+             {
+                super(.....); <---- This statement "must" be
+				    first statement of "sub-class"
+				    constructor
+               ......
+              }
+Ex:
+
+class A
+{ 
+   
+   public A(int n){
+      System.out.println("A::IntArg");
+    }
+}
+class B extends A
+{
+    public B(){
+      super(100); <-- any "int"value
+      System.out.println("B::NoArg");
+    }
+   public B(int n){
+       super(n);
+      System.out.println("B::IntArg");
+    }
+   
+   public B(String n){
+     super(0);
+      System.out.println("B::StrArg");
+    }
+}
+         
+   
+
+Example:
+
+Initialize the super class fields via sub-class constructors:
+
+
+class Person
+{
+    private int age;
+    private String name;
+
+    public Person(int age, String name) { ...}
+}
+
+class Employee extends Person
+{
+     private double salary;
+
+     public Employee(){
+            super(0,"");
+            salary = 0;
+     }
+     public Employee(String name, int age, double salary){
+             super(age,name);
+             this.salary = salary;
+     }
+}
+
+In main() method:
+
+      Employee emp = new Employee("Rajesh",30,45000);
+       System.out.println(emp.getAge() + " " + emp.getName() + " " + emp.getSalary());
+
+Object Casting ---- Boxing and Unboxing
+===================================================================
+
+To store sub-class object reference to the super-class reference variable is called "Boxing".
+
+
+To retrieve sub-class object reference from super class reference variable is "Unboxing".
+
+Eg
+
+class A {
+   int x;
+}
+class B extends A{
+   int x;
+}
+class C extends A{
+   int x;
+}
+
+class BoxUnbox
+{
+   public static void main(String []args)
+    {
+        A a; //super ref var
+
+        B b = new B();
+        C c = new C();
+        b.x = 10;
+        //Boxing
+        a = b;
+
+        //Unboxing
+
+       // C y = (C)a;  // Invalid casting
+        B y = (B) a;   // Valid casting
+        System.out.println(y.x);
+        ((B)a).x = 100;
+        System.out.println(  ((B)a).x );
+
+    }
+} 
+
+class Person
+{
+   age, name;
+}
+
+class Literate extends Peron 
+{
+}
+
+class Illerate extends Person
+{
+}
+class Student extends Literate {}
+
+class Employee extends Literate {}
+
+
+

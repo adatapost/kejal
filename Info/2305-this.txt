@@ -1,0 +1,97 @@
+"this" reference variable
+========================================================
+
+
+"this" is also known as "keyword" or "pre-defined" reference variable which contains "reference" of implicitly passed object into instance-methods.
+
+
+"this" keywords has many usage and applications but we'll use them as we'll learn new features of OOP.
+ 
+
+First usage of "this"
+---------------------
+To avoid name conflict with fields and parameters.
+
+
+ class Date
+  {
+     private int d,m,y;
+
+     public void set(int d,int m,int y)
+        {
+           d=d;
+            m=m;
+           y=y;
+         }
+     public void print()
+       {
+         System.out.println(d + " " + m + " " + y);
+        }
+   }
+
+  
+Date m=new Date();
+m.set(10,2,2003);
+m.print(); //will prints 0 0 0 
+
+Three parameters name are same as "fields" and in method definition, "parameters" have higher priority over "fields" so value wont be assigned to fields.
+
+In this example, parameters are assigned to themself.
+
+To avoid this situtation, qualified fields with "this" keyword.
+
+ public void set(int d,int m,int y)
+  {
+      this.d = d;
+      this.m = m;
+      this.y = y;
+   }       ^   ^
+           |   |-------- parameters
+        fields
+
+
+
+Second usage of "this"
+-------------------------
+To return the reference of current object.
+
+
+Program to find the largest date amount two date objects:
+
+
+class Date
+{
+   private int d,m,y;
+   public void set(int d,int m,int y)
+    {
+     this.d=d; this.m=m; this.y=y;
+    }
+ 
+    public Date max(Date obj)
+     {
+        if(this.y>obj.y && this.m>obj.m)
+             return this;
+        return obj;
+
+       }
+    public void print()
+     {
+       System.out.println(d + " " + m + " " + y);
+      }
+}
+
+Code in main,
+
+Date one = new Date();
+Date two = new Date();
+Date three;
+
+one.set(10,10,2023);
+two.set(10,12,2034);
+
+three = one.max(two);
+three.print();
+
+
+            
+            

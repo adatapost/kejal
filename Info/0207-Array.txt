@@ -1,0 +1,143 @@
+Nested array (also called Jagged Arrays)
+=======================================================
+
+ Java's way to represent two or multi-dimensional array is  a "Jagged" or "Nested" array. An array whose elements are  array reference are called "Nested or Jagged" array.
+
+
+
+ Syntax:
+
+  DataType [][]varName; // [][][]varName
+           varName[][]; // varName[][][]
+
+
+We want to create some arrays of varying length:
+
+  
+    int []one = {10,20,30};
+    int []two = new int[5];
+    int []three = {1,22,3,44,55,77,88};
+
+
+ And now we want to create another array which  represent above created arrays,
+
+     int [][]array; // array whose elements are array
+
+     //Create an array object to store three array referece
+
+     array = new int[3][];
+
+     array[0] = one;
+     array[1] = two;
+     array[2] = three;
+
+Or, you can choose "array initializer",
+
+    int [][]array = { one, two, three};
+
+Or, you can construct an arrays like :
+
+     int [][]array =
+      {
+         { 10,20,40},
+         new int[10],
+          { 11,22,33,44}
+       };
+Or, if you want to create an array of array whose elements length is same then,
+
+      int [][]array = new int[3][5]; //three array and each                                    // array has 5 elements.
+
+
+
+Or, to create array of varying length:
+
+     int [][]array;
+
+      //create array of three element of "Array"
+
+     array = new int[3][]; 
+
+     //create arrays whose references will be stored into
+     // "array" var
+
+     array[0] = new int[5];
+     array[1] = new int[30];
+     array[2] = new int[3];
+
+
+Example :
+
+    int nos[][] = new int[3][];
+
+     nos[0]= new int[3] { 10, 20, 40};
+     nos[1] = new int[10];
+     nos[2] = new int[2] { 11,22};
+
+     //print elements
+
+     for(int no[] : nos){
+  
+        for(int n : no){
+ 
+            System.out.print(" " + n);
+ 
+         }
+         System.out.println(); // newline
+     
+      }
+ 
+
+   Or
+
+    for(int i=0; i<nos.length; i++)
+     {
+ 
+       for (int j = 0; j<nos[i].length; j++)
+          {
+
+             System.out.print(" " + nos[i][j]);
+ 
+            }
+        System.out.println();
+     }
+
+Command Line Argument
+------------------------------------------------------
+In main() method, we've  "String []args" array parameter which takes value from command prompt.
+
+For example,
+
+>java Sample Hello  World 10 30 "My Sample Text"  
+
+  In above command line, we've String []args in main method parameters recive "Five" values like
+
+ args = { "Hello", "World", "10", "30", "My Sample Text"};
+
+Example:
+
+ class Sample
+  {
+   public static void main(String args[])
+   {
+     System.out.println("Total elements " + args.length);
+
+     for(String arg: args)
+       {
+         System.out.println(arg);
+       }
+     }
+   }
+
+And if we input,
+>java Sample 10 40 "Hello World" <----three parameters
+and output will be:
+
+ Total elements 3
+ 10
+ 40 
+ Hello World
+
+>java Sample c:\   
+
+  Will lists files/folders
+

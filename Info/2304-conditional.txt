@@ -1,0 +1,256 @@
+Best practice to name the variables
+===================================
+
+Use "camelCase" naming conventions to declare/create
+variables. You can prefix "m" for local variables.
+
+ e.g
+
+    int no;  or  int mNo;
+
+    String str;  or String mStr;
+
+
+    double amount;
+
+
+Use following syntax to create two or more variables of same datatype.
+
+    datatype varName1 = value1,
+             varName2 = value2;
+
+    int mEnglish,
+        mHindi,
+        mGujarati;
+
+Do not use "tab" key to indent the source code. Instead, uses (add) space key.
+
+
+e.g
+
+class HelloApplication{
+ public static void main(String []args){
+   int personAge = 10;
+   String personName = "Raja";
+   .....
+ }
+}
+
+Always add (use) pair of opening and closing curly braces and start the opening { curly brace at the end of previous line.
+ 
+Conditional statements --- if and switch
+==========================================================
+
+We've learn the "conditional" operator that is used to test the logical/boolean expression and based upon the boolean expression executes the "true" or "false" part.
+
+Note that we cannot use "multiple" statement for either "true" or "false" part of "conditional operator".
+
+Java (or every language) has conditional "statements" namely "if" and "switch" to execute one or more statements based upon the value of boolean expression.
+
+
+Syntax of "if" statement
+======================================
+
+1. simple if
+
+if(expression){
+  //statements...
+}
+
+
+2. if..else statement
+
+if(expression){
+  //statements...
+}else{
+  //statements...
+}
+
+3. if..else..if lader statement
+
+if(expression){
+  //statement
+}else if(expression){  //add atleast one space
+  //statement          //between else and if
+}else if(expression){
+  //statement
+}else{
+  //statement
+}
+
+OR
+
+if(expression){
+  //statement
+}else
+if(expression){
+  //statement
+}else
+if(expression){
+  //statement
+}else{
+  //statement
+}
+
+
+4. nested if -- if statement inside another if
+
+if(expression){
+  ....
+  if(expression){
+     ....
+  }else{
+     ....
+  }
+}....
+
+
+IMPORTANT: 
+
+  1. Never terminates (put semi-colon) the if or else      block.
+
+       It is invalid :   if(exp); { }
+  2. The "expression" must be boolean (it returns true or
+     false)
+
+  3. Always wrap if body or else body with pair of { }.
+
+  4. Avoid redudent expressions.
+
+      for example:
+
+         int age = 10;
+
+         boolean isVoter = age >= 18;
+
+         if(isVoter == true){ 
+              System.out.println("Can vote");
+          }
+
+        Above statement is an example of redudent expr.
+
+        You can write this statement like:
+
+        if(isVoter){
+           System.out.println("Can Vote");
+        }
+
+        or
+        if(!isVoter){
+           System.out.println("Cannot vote");
+        }
+
+Example-1 Input age and print "You're voter" if age is above 17.
+
+class Test{
+  public static void main(String []args){
+    java.util.Scanner sc=new java.util.Scanner(System.in);
+     
+    System.out.print("Enter age : ");
+    int age = sc.nextInt();
+
+    if(age>17){
+       System.out.println("You're voter.");
+     } 
+  }
+}
+
+Example-2 Input "age" and display "you're voter" if age is           above 17, display "you're minor" otherwise.  
+ 
+if(age>17){
+  System.out.println("You're voter.");
+}else{
+  System.out.println("You're minor.");
+}
+
+
+OR
+
+boolean voter = age > 17;
+
+if(voter){
+  //
+}else{
+  //
+}
+
+Example -3 Input day number of week and display day name            accordingly.
+
+System.out.print("Enter the day no : ");
+int day  = sc.nextInt();
+
+if(day == 1){
+   System.out.println("Monday");
+}else if(day == 2){
+   System.out.println("Tueday");
+}else{
+   System.out.println("Invalid day number");
+} 
+
+
+Example -4 Input integer number and display "ZERO", "POSITIVE" or "NEGATIVE" as per sign & value of input number.
+
+
+  int no = sc.nextInt();
+  if( no == 0){
+      System.out.println("ZERO");
+  }else if(no > 0){
+      System.out.println("POSITIVE");
+  }else {
+      System.out.println("NEGATIVE");
+  }
+
+ OR
+
+ String result="";
+
+ if(no == 0){
+     result = "ZERO";
+ }else if(no >0 ){
+     result = "POSITIVE";
+ }else{
+     result = "NEGATIVE";
+ }
+ System.out.println(result);
+
+
+Example - 5 Input number and if it is negative then convert it to positive value.
+
+ if(no < 0){
+    no = no * -1;
+ }
+
+Example - 6 Input three numbers and find out the largest             one.
+
+Example - 7 Input three numbers and find out the smallest 
+            one.
+
+
+Example - 8 Input day, month and year. Write statements to
+            validate the date.
+
+        e.g
+
+          31 2 2002  It is invalid
+          31 3 2002  It is valid
+          29 2 2001  It is invalid
+          ....
+
+Example - 9 Input marks of five subjects and show status as             per following coditions:
+
+            1. if student fails in one or two subjects then
+               display "ATKT".
+            2. if student fails in three or more subjects
+               then display "FAIL"
+            3. If student scores more than 34 marks in each
+               subject then display "PASS".
+
+            Also calculate total, percentage and grade as             per :
+                   per in between 70 to 100 - Grade A
+                   per in between 60 to 69 - Grade B
+                   per in between 50 to 59 - Grade C
+                                otherwise - Grade D
+
+
+           
+   

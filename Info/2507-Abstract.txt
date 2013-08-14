@@ -1,0 +1,86 @@
+The "abstract" class and "abstract" method
+====================================================================
+
+ "abstract" keyword can be used with "class" and "method".
+
+ e.g
+
+  public abstract class Language {}
+
+Or
+
+  public abstract class Question{
+      private String text;
+      .......
+      public abstract void render();
+      public abstract boolean isCorrect();
+  }
+ 
+ We cannot create an object of "abstract" class. The only way to use an "abstract" class is sub-classing. That means an abstract class is known as "must-inheritable" class.
+
+In other words, "partially" created or implemented classes is known as "abstract" class.
+
+
+
+abstract method  (Must overridable method)
+------------------------------------------------------------------
+ abstract method don't have method body.i.e they don't have implementation. Their implementation will be created/defined in sub-classes by overriding this declaration.
+
+abstract class may or may not have abstract methods:
+
+Ex1
+      abstract class Language {
+          public void speak(){
+              System.out.println("I can speak ?");
+          }
+       }
+      class Hindi extends Language{}
+
+Ex2
+     abstract class Language {
+          public abstract void speak(); <-- no method body
+       }
+      //Hindi must've to override speak 
+      class Hindi extends Language{
+          @Override 
+          public void speak() { ...}
+      }
+     //If sub-class failed to override then this sub-class will be
+     // abstract class
+     abstract class Gujarati extends Language {}
+     class Mehsani extends Gujarati {
+          @Override
+          public void speak(){ 
+              System.out.println("I can speak Guj/Meh"); 
+          }
+      }
+
+
+
+The final keyword --- to create not inheritable class and not overridable method.
+-----------------------------------------------------------------
+
+final class A {}
+
+class B extends A{} <-- Error :  "A" is final class
+
+
+
+abstract class Language{
+    abstract public void speak();
+    final public String about(){ "This class is designed by Mr. ABC";}
+}
+class Hindi extends Language{
+   @Override
+   public void speak() {}
+    
+   @Override
+   public String about() { return "Developed By : Rajesh";}
+}        /\
+         ||
+      ERROR: final method cannot be replaced/override
+
+     
+
+     
+

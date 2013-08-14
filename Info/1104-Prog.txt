@@ -1,0 +1,108 @@
+Java Language Basics
+==============================================
+
+1. Java Source code file
+
+   ========================================
+
+   The Java source code must have .java extension
+   and it contains :
+
+      1. Only one top-level "public" class/interface/enum          per .java file.
+      2. One or more non-public class/interface/enum.
+
+   
+   The .java file contains number of class definitions and    thats why it is called "Compilation" unit.
+
+
+ [ Note : Always create .java file in your own folder.]
+ [      e.g c:\kejal\day1>notepad FileName.java       ]
+
+       3. Java file name must be typed as "PascalCase"           format -- i.e Capitalize the first letter of
+          each word.
+
+             e.g
+
+              HelloApplication.java
+              Employee.java
+              ClassRoom.java
+      4. Class (DataType) names must be typed as          "PascalCase".
+
+         e.g
+
+            class StudentEnroll 
+             {
+              }
+             class BankAccount {}
+      5. local variable, field name, method (function) name
+         must be written in "camelCase" --- lowercase the
+         first word and then capitalize first letter of          each word.
+ 
+          e.g
+
+            int rollNo = 10;
+
+            String firstName = "Patel";
+ 
+            String localAddress = "12-Abc";
+
+            double monthlySalary = 20000.22;
+
+            void doWork() { }
+            int getAmount() { }
+            void setAmount() { }
+            
+
+     Above guideline (rules) are optional but we must
+     follows this guideline to learn & develop an      "Industry" standard applications.
+
+
+     Example : Create First.java (Compilation Unit) and
+               add following class definitions:
+
+          First.java
+         =============================
+
+         class HelloApplication {}
+         interface TestIt {}
+         enum MyFriend {}
+
+
+         Now, compile these classes,
+
+            >javac First.java
+
+          This command will creates three  .class files
+          called "Java-byte code" files --- 
+ 
+                1. HelloApplication.class
+                2. TestIt.class
+                3. MyFriend.class
+
+
+      Example:   Defining the "public" class
+ 
+          
+      It is important to note that the top-level 
+      "public" class name must be same as "FileName.java"       or vice-versa.
+
+        So Java compiler issue error while compiling          following code:
+
+            First.java
+            =============
+            public class HelloApplication {}
+
+              Error says that the "HelloApplication" must               be declared in "HelloApplication.java".
+
+     So you can rename First.java to HelloApplication.java
+
+              Or
+
+     change the class name "First" 
+               e.g public class First {}
+
+
+ 
+
+
+             

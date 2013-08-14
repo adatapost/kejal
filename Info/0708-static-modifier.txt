@@ -1,0 +1,131 @@
+The "static" keyword or modifier
+==================================================================
+
+ The "static" keyword has number of usage:
+
+ 1. To create "global" field.
+
+ 2. To create "global" method -- method can be accessed without object     reference.    
+
+ 3. To create "static" block -- To initialize the "static" fields and also write a code that will be executed at most once per program.
+
+
+class Test
+{
+    public int no1;          // instance field
+    public static int no2;   // static field
+}
+
+class TestMain
+{
+    public static void main(String []args)
+     {
+
+       System.out.println(Test.no2);   // 0
+       Test.no2 = 10;
+       Test a = new Test();
+       Test b = new Test();
+       a.no1  = 20;
+       b.no1 = 30;
+       Test.no2 = 90;
+       System.out.println(a.no1 + " " + b.no1 + " " + a.no2 + " " + b.no2 + " " + Test.no2);
+      }
+} 
+
+NOTE: The "static" modifier cannot be used with "local" variables,       and method parameters.
+
+
+Static methods
+=================================================================
+
+Static methods does not belongs to any specific object however in some cases you can encapsulate "static" fields via static methods.
+
+
+Ex-1 
+
+class Student{
+     private int roll;
+     private String name;
+     //constructors, getter, setter, hashCode, equals, toString
+
+     
+     public static boolean equals(Student one, Student two)
+      {
+         return one.equals(two);
+       }
+     public static int compare(Student one, Student two)
+      {
+           if(one.hashCode() > two.hashCode())
+               return 1;
+           else
+           if(one.hashCode() < two.hashCode())
+               return -1;
+           return 0;
+        }
+}
+
+In main method,
+
+ Student a1 = new Student(10,"Rajesh"); 
+ Student a2 = new Student(2,"Rajesh");
+
+ if(Student.equals(a1,a2)) 
+     //Equal
+ else
+     //Not equal
+
+ int result = Student.compare(a1,a2);
+ if(result == 0)
+    //equals
+ else
+ if(result > 1)
+    //a1 > a2
+ else
+    //a1 < a2
+ 
+
+3. Static block
+==============================================================
+ In Java class definition, we can add two types of "blocks" -- pair of opening and closing curly braces:
+
+class Test
+{
+   //static block
+   static
+    {
+      System.out.println("Static -- line1");
+    }
+
+   //instance block
+    {
+       System.out.println("Instance - line1");
+     }
+
+    static
+     {
+       System.out.println("Static -- line2");
+      }
+    
+      {
+        System.out.println("Instance - line2");
+      }
+}
+
+The code in "static {} " block will be executed atmost once per program execution where as "code" of instance block will be executed whenever we create an object.
+ 
+
+4. import the "static" methods or static fields.
+
+
+import static java.lang.System.out;
+import static java.lang.Math.pow;
+
+class TestMain{
+   public static void main(String []args){
+       double result = pow(2,6);
+       out.println(result);
+    }
+}
+
+
+    

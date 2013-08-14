@@ -1,0 +1,106 @@
+Important packages of Java Core API
+===================================================
+Following package names are reserved for "Java Core APIS" or Java Platforms.
+
+  1. java
+  2. javax
+
+ These names -- java and javax -- must not be used
+                                  to create user-defined
+                                  datatypes or classes.
+
+  
+ "java" package and its sub-packages
+  ----------------------------------
+
+   1. java.lang   -- This is "primary" or "main" package of                      Java core API and it includes :
+                        Wrapper classes
+                        Classes to print output on screen
+                        Classes to load another classes
+                        Thread classes
+                        Exception classes
+
+                   -- This is the only package in Java that
+                      will be "imported" automatically in
+                      our program. 
+
+                       We can use any class/type from this
+                       package without qualifying or 
+                       importing a package.
+
+                       The Java compiler automatically 
+                       insert "java.lang" package in our
+                       code.
+
+
+    What is the meaning of "Importing a package"?
+     =============================================
+
+      Importing a package means to inform the Java Compiler       or JRE about location/position of class.
+ 
+      In which location the class is available is called 
+      "import".
+
+               e.g
+
+                   To use "Date" class in program, we must
+                   have to specify the location of Date                    class.
+                    e.g
+
+                          java.util.Date
+                       So "Date" class is located at                        "java.util" package.
+
+     What is "fully qualified" class name?
+
+         Date <--- is not fully qualified name and                    sometimes it creates ambiguity because
+                   there are two Date classes in Core APIs.
+
+         java.util.Date  and
+         java.sql.Date 
+
+                
+    2. java.util   ---- It contains :
+
+                        1.  DataStructure classes - Linked
+			    List, Stack, Tree, Map etc.
+                        2.  Date, Time and Calendar
+                        3.  Misc classes - Random,Scanner                             etc
+
+    3. java.io     --- It contains device independent
+                       Input & Output classes.
+
+    4. java.text   -- It contains "Number", "DateTime",                        "String" formatting classes
+
+    5. java.net    -- It contains "NetWork" classes
+
+    6. java.sql    -- It contains "Database programming"
+                      classes
+
+    7. java.awt    -- It contains Graphical User Interface
+                      System classes -- Drawing, images
+                      etc.
+
+         and there are number of other sub-sub packages
+         under these packages.
+
+
+  "javax" package 
+  ================================================
+
+  "javax" package name describes an "extension/additional"
+   APIS.
+
+    1. javax.swing  --- It is developed using 'java.awt'
+                        and provide classes to develop
+                        Windows Application.
+
+    2. javax.xml    --- To parse/read the XML documents.
+                        (It extends the java.io and other                          APIS)
+    3. javax.sql    --- It extends java.sql classes to
+                        create new classes that will be                         used in JavaEE app.
+
+    
+
+
+
+                        

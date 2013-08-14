@@ -1,0 +1,204 @@
+The switch statement
+===========================================
+
+ switch keyword evalues the expression and transfer the  control to appropriate "case" block defined inside the  switch body.
+
+ General Syntax:
+
+  switch(int_or_char_or_string_expression)
+  {
+
+     case label_literal_1:
+                        //statements
+                        break;
+     case label_literal_2:
+                        //statements
+                        break;
+
+     case label_literal_3:  /* multiple cases */
+     case label_literal_4:
+     case label_literal_5:
+                         //statements
+                         break;
+
+     case default:
+                  //statement
+                  break;
+     }
+
+ Note that the switch expression must be either "int", "char" or "string" type.
+
+Ex:1
+public class Switch
+{
+  public static void main(String []args)
+   {
+
+   java.util.Scanner scan = new                                   java.util.Scanner(System.in);
+    
+   System.out.print("Enter day number : ");
+   int day = scan.nextInt();
+
+   switch(day)
+    {
+
+         default:
+                System.out.println("Invalid day number.");
+                break;
+         case 7 : 
+                 System.out.println("Sunday");
+                 
+                 break;
+         case 1:
+                 System.out.println("Monday");
+                 break;
+                  
+        
+
+    }
+   }
+}
+
+
+Ex:2
+
+Input principal amount, years (terms) and choice whether compound or flat interest is to be applied.
+
+
+public class SwitchStr
+{
+  public static void main(String []args)
+   {
+
+   java.util.Scanner scan = new                                   java.util.Scanner(System.in);
+    
+  double rate = 0, 
+          interestAmount =0, 
+          amount;
+
+  int year=0;
+  
+  String answer="";
+
+
+  System.out.print("Enter year :");
+  year = scan.nextInt();
+  
+  System.out.print("Enter amount : ");
+  amount = scan.nextDouble();
+
+   System.out.print("Calcuate flat interest or compound ?                              yes or no : ");
+   answer = scan.next();
+
+   switch(answer)
+    {
+
+         default:
+                System.out.println("Invalid answer");
+                break;
+         case "yes" : 
+         case "Yes" :
+         case "YES" :
+                 System.out.println("Flat interest");
+
+                  switch(year)
+                  {
+                      case 1:
+                      case 2:
+                              rate = 0.02;
+                              break;
+                      case 3:
+                      case 4:
+                      case 5:
+                              rate = 0.01;
+                              break;
+                      default:
+                              rate = 0.009;
+                              break;
+                   }
+                  interestAmount = amount * rate * year;
+                  System.out.println("Interest amount : " + interestAmount);
+                 break;
+         case "no":
+                  System.out.println("Compound Interest");
+                 break;
+
+    }
+   }
+}
+
+
+Ex:3 Using switch (and if), validate the date
+Ex:4 Using switch (and if), find next and previous date of
+                             valid date.
+
+
+public class ValidDate
+{
+  public static void main(String []args)
+   {
+
+   java.util.Scanner scan = new                                   java.util.Scanner(System.in);
+    
+   System.out.print("Enter day, month and year : ");
+   int day = scan.nextInt();
+   int month = scan.nextInt();
+   int year = scan.nextInt();
+
+    boolean valid=true;
+    boolean leap = year % 4 == 0;
+
+
+if(year>=1900 && year<=2099)
+{
+
+ switch(month)
+  {
+   case 1:
+   case 3:
+   case 5:
+   case 7:
+   case 8:
+   case 10:
+   case 12:
+             if(day<1 || day>31){
+                 valid= false;
+              }
+             break;
+
+   case 4:
+   case 6:
+   case 9:
+   case 11:
+
+             if(day<1 || day>30){
+                 valid= false;
+              }
+             break;
+
+   case 2:
+            if(leap){
+                if(day<1 || day>29){  
+                    valid = false;
+                 }
+            }else{
+                if(day<1 || day>28){  
+                    valid = false;
+                 }
+            } 
+            break;
+    default: valid=false; break;
+  } /*--- End of switch ---*/
+
+}else{
+  valid = false;
+} /*---- End of year if ------*/ 
+
+  if(valid){
+      System.out.println("Date is valid");
+  }else{
+      System.out.println("Invalid date");
+  }
+  
+ } /*---- End of main ------*/
+}

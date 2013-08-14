@@ -1,0 +1,136 @@
+Java SE Platform
+==============================================
+
+
+The Java SE is bundle of :
+
+    1. Java Languages and other tools
+    2. Java Core API -- Or -- Java TYPES system
+    3. Java Runtime Environment -- JRE
+
+ and this bundle is called Java Software Developer Kit -                                                        JDK.
+
+
+About JDK installation
+=======================
+
+Normally, JDK installed under C:\Program Files\Java folder (however you can change it at the time of installation) with jdk.version.numer folder.
+
+ This "jdk.version.number" folder is called JAVA_HOME.
+
+You may find following folders in JAVA_HOME:
+
+ 1. bin -- It includes javac.exe (Java compiler)
+                       java.exe (Java Launcher - It starts                                   the JRE Services)
+                       and other tools.
+
+ 
+  In order to compile your .java code files from anywhere
+  (any folder) within the machine, add this path to "Path"
+  environment variable.
+
+  What is "Path"?
+
+    The "Path" is called environment variable and it 
+    contains folder path which contains executables     (.exe,.bat, .com) and one path is delimeted with ; (semi-colon) to another path.
+
+     e.g
+
+     Type "Path" command at command prompt to see the
+     existing path.
+
+
+     To set "Path" permenent
+     =========================
+      1. Right Mouse on My Computer + Properties
+      2. Select Advanced tab +  Click on "Environment Vars"
+      3. Do not add,delete,edit the "System variables".
+         We must have to create "User" environment vars:
+
+          Click on New button to add new var:
+             Name : Path
+             Value : c:\Program Files\Java\jdk.x.x.x\bin
+
+
+    When we type something and press enter at "command" prompt, the operating system will make a search for entered command in folder locations defined in "Path" env variable.
+
+     If given "command" is found then OS will execute it      or display error-message otherwise.
+
+
+2. lib  --- folder include Java Archive Files (JAR) which             is a "zip/compressed" file and it contains
+            classes (Datatypes), resources (images) and
+            source code.
+
+            .jar files are called library files or dynamic
+            link library file.
+
+3. jre  ---- This folder contains "runtime" environment to
+             assist the OS to run your Java program.
+
+4. src.zip  --  Src.zip file contains source code of java
+                core API.
+
+
+The Java Language
+========================================================
+
+The "Java" language is :
+
+    1. Case-sensitive
+    2. Statically typed 
+    3. Object-oriented
+    4. General-purpose 
+
+         programming language whose applications are 
+         managed (controlled) i.e start, exected, stopped
+         by the JRE-JVM.
+
+    5. Syntax is borrowed from C++.
+
+    6. Java Language is developed via Java Language        Specification (JLS) --- a document which provide
+       guideline for the people so they can develop Java
+       compiler.
+
+         There are number of "companies" have their own
+         Java compilers -- including google, Apache, IBM,
+         etc.
+
+     7. Java Language, Java APIS,Java Runtime Environments         and other platforms are developed using "GUIDELINE -- also called specificiation" so any person wish to develop his/her own platform, language, lib must have to strictly follow the "Guideline". And that is why Java Technologies are "Open Source".
+
+
+What is "Statically typed"?
+
+  Languages have ability to examine program code at the time of compilation is called "Statically typed".
+
+
+  And some languages have ability to examine program code
+  during execution is called "Dynamically typed".
+
+
+   Java, C# are example of "statically" typed languages.
+
+   JavaScript, PHP, Ruby, Python are example of "dynamic"    languages.
+
+
+
+  for example, this code cannot be executed in C# as well as Java:
+
+    int a;
+    a++;
+
+  Both; Java & C# compiler will complaint that there is no   such value in "a" to increment.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

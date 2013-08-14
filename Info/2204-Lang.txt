@@ -1,0 +1,186 @@
+5. Teranary operator or conditional operator
+   =====================================================
+
+
+   Syntax:
+
+     exp1 ? exp2 : exp3;
+
+   This syntax cannot be span in two or more rows -- must     be written in single statement.
+
+
+    if "exp1" is evaluted to true then "exp2" will be                  executed, "exp3" will be executed otherwise.
+
+    e.g
+
+     int a=3, b=5;
+
+     int max =  a > b ? a : b;
+
+     System.out.println(max);
+
+Or you can use boolean variable:
+ 
+    boolean status = a>b;
+
+    String str = (status ? "'a' is the largest" : "'b'                               is the largest");
+    System.out.println(str);
+
+
+Ex: Input three numbers and find the largest and smallest.
+
+
+Ex: Input a number and print "ZERO", "POSITIVE" or     "NEGATIVE" based upon the value of variable.
+
+Ex: Input a character and test a given character is digit     or not.
+
+
+  condition1 ? result1 : condition2 ? result2 : result3
+ 
+
+a  b   c
+22 2   66
+7  77  3
+
+ int max;
+
+ max = a>b && a>c ? a : b>a && b>c ? b : c;
+
+
+Ex-2 Hint
+    int no =10;
+    
+  String str= no>0  ? "POSITIVE" : no<0 ? "NEG" : "ZERO";
+
+  str = no == 0 ? "ZERO" : no>0 ? "POS" : "NEG";
+
+Ex-3 Hint
+
+   char ch = 'R';
+
+   boolean isDigit;
+
+   isDigit = ch>='0' && ch<='9';
+ 
+  String str = isDigit ? "Yes it is digit" : "No it isn't";
+   System.out.println(str);
+
+
+
+Ex-4 Test a given character is alphabet or not.
+Ex-5 Test a given character is upper alphabet or not.
+Ex-6 Test a given character is whitespace or not.
+Ex-7 Test a given character is digit, or upper alpha or      lower alpha or whitespace or symbols.
+
+Ex-8 Input int number and returns length of digits.
+
+  e.g
+
+   input number is 12 then its length is 2 digits
+   input number is 4582 then its length is 4 digits
+                   234567                  6
+
+Ex-9 Input marks of five subjects, find total & percentage      and display grade based upon the following conditions:
+
+       per in between 70 to 100 -  Grade A
+       per in between 60 to 69  -        B
+                      50 to 59  -        C
+                      40 to 49  -        D
+                     otherwise  -        E
+
+ 
+
+6. () type cast operator
+
+   Type cast operator maily used to convert datatype of    "value" of one datatype to another datatype.
+
+   There are two types of "type" conversions or type-cast:
+  
+     1. Implicit type conversion (Automatic type          conversion)
+
+        As per Java language specification value will be
+        assigned & converted automatically to another
+        datatype.
+
+        Implicit conversion table for numeric primitive
+        types:
+
+          
+
+datatype   byte   short   int    long    float    double
+
+byte       byte   short   int    long    float     double
+short      short  short   int    long    float     double
+int        int    int     int    long    float     double
+long       long   long    long   long    float     double
+float      float  float   float  float   float     double
+double     double double  double double  double    double
+
+
+ For example,
+
+       System.out.println(5/2); // prints 2
+        System.out.println(5/2.0); // print 2.5
+        double a = 5/2;  
+        System.out.println(a);     //print 2.0
+
+    2. Explicit conversion takes place between two 
+       incompatible datatype with loss of precision (data        will trunced)
+
+       Syntax:
+
+         destDataType  varName = (destDataType) expr;
+
+         or
+
+         (TypeName) expr;
+
+      for example, char type in Java cannot allow convert
+        its value to int or byte implicitly. We must have
+        to cast it explicitly.
+
+
+      //Program to print char code (ASCII) of a char:
+
+         char ch = 'A';
+
+         byte asc = (byte) ch;
+
+         int  asc1 = (int) ch;
+
+         System.out.println(asc +  "  " + asc1);
+
+  Integer literal (constant) value will be converted automatically to byte, short if given value is in between range of "target" datatype.
+
+    byte b = 20;   // byte range is -128 to 127
+    short c = 399; // short range -32768 to 32767
+   
+ but following code wont compiled:
+
+     byte b = 128; // value outside the range
+
+ In short, lower magnitude (precision) data value converted automatically to "higer" precision datatype (as per table) but if we want to store value from "higher" precision datatype to lower precision datatype, we must have to "cast" it.
+
+     int a = 65;
+     byte b = (byte) a;
+     
+Determine the "range" of primitive types
+========================================================
+
+We'll use MAX_VALUE and MIN_VALUE constants from wrapper types:
+
+
+ System.out.println(Byte.MIN_VALUE 
+              + " " 
+              + Byte.MAX_VALUE);
+
+System.out.println(Long.MIN_VALUE 
+              + " " 
+              + Long.MAX_VALUE);
+
+To store max value of int:
+   int no = Integer.MAX_VALUE;
+
+
+      
+    

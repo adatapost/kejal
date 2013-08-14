@@ -1,0 +1,27 @@
+int []nos = { 10 , 20, 30};
+
+
+
+int [][]array;
+
+    array = new int[3][4];
+
+ Or
+
+
+int [][]array = 
+    {
+          {11,22,33,44},
+          {11,22,33,44},
+          {11,22,33,44}
+     };
+
+Or
+
+ int [][]array;
+    
+  array = new int[3][];
+
+  array[0] = new int[10];
+  array[1] = new int[2];
+  array[2] = new int[6];

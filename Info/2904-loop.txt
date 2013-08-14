@@ -1,0 +1,212 @@
+Loop statements
+===================================================
+To iterate or repeat statements, we've four different loops:
+
+1. simple for loop, has three expression - initialization, condition and increment/decrement.
+
+   Syntax:
+
+    for(init;expr;incr/decr)
+     {
+       //statements
+     }
+
+2. collection "for" loop to read elements from collections     or array. (We'll discuss this loop later)
+
+    Syntax:
+
+     for(DataType varName : Collections)
+     {
+       //statements
+      }
+
+3. while loop , has single expression (condition)
+
+    while(expr)
+    {
+      //statements
+     }
+
+4. do .. while, has single expression at the end of loop.
+
+    do
+     {
+       //statements
+      }while(expr); 
+
+    Only the do.. while loop must be ends with semi-colon.     Do not terminate the for and while loops.
+
+
+Ex1:
+
+ for(int a=1,b=10,c=5; a<=b && c>=a ;a++, c--,b++)
+  {
+    System.out.println(a + "  " + b + " " + c);
+  }    
+
+
+Ex2:
+
+ int a=1;
+
+ for(;a<=5;)
+  {
+    System.out.println(a);
+    a++;
+   }
+
+  initialization and increment expressions are not   mentioned in above example.
+
+ 
+Ex3:
+
+  int a=1;
+  while(a<=5)
+  {
+     System.out.println(a);
+     a++;
+   }  
+
+  OR
+
+  int a=1;
+  do
+   {
+     System.out.println(a);
+     a++;
+    }while(a<=5);
+ 
+Ex4: Print a line by repeating "-" sign.
+
+ 
+Code in main() method:
+
+     System.out.println();
+     for(int i=1;i<=50;i++)
+      {
+          System.out.print("-");
+       }
+
+     System.out.println();
+     for(int i=1;i<=40;i++)
+      {
+          System.out.print("-");
+       }  
+
+Important:
+
+  1. variable that is used to controls the loop is called
+     "loop-control" variable.
+
+  2. expression in for, while and do while must returns      boolean --true or false value.
+
+  3. for loop has all three caluses are optional.
+
+      for example,
+
+         for(;;)
+          {
+             System.out.println("Hello");
+           }
+
+           will entered into infinite loop because the            default value of expression is true.
+
+
+      where as , in while and do while, we must have to
+      specify the "expr".
+
+
+The "break" and "continue" keywords
+=======================================================
+
+The "break" keyword is used to terminate/stop the execution of "switch" case and loops.
+
+The "continue" keyword is used to skip the statements followed by it in any "loop" and transfer the control at begin of loop.
+
+
+Ex: Input valid age.
+
+      java.util.Scanner sc = new                                   java.util.Scanner(System.in);
+      int age =0;
+      while(true)
+      {
+         System.out.println("Enter the age : ");
+         age=sc.nextInt();
+         if(age>=17 && age<=60)
+          {
+             break;
+           }
+          System.out.println("Invalid age..");
+        }
+       System.out.println("you've input :"  + age);
+
+Or use "continue" and "break" together
+
+      while(true)
+      {
+         System.out.println("Enter the age : ");
+         age=sc.nextInt();
+         if(age<17 || age>60)
+          {
+            System.out.println("Invalid age..");
+            continue;
+           }
+          break;
+        } 
+        
+
+Or use "loop" control variable to break/continue the loop.
+
+
+     boolean valid = false;
+  
+     for(;!valid;)  //or while(!valid)
+      {
+         System.out.println("Enter the age : ");
+         age=sc.nextInt();
+         if(age<17 || age>60)
+          {
+            System.out.println("Invalid age..");
+           }
+         else
+           {
+              valid = true;
+            }
+        }
+
+
+Or    do{
+        .....
+      }whlie(!valid);
+
+
+continue with for statement
+===================================
+
+ for(int i=1;i<=20;i++)
+  {
+     if(i%5 == 0)
+      {
+        continue;
+      }
+    System.out.println(i);
+  }
+
+Will prints,
+
+1
+2
+3
+4
+6
+7
+8
+9
+11
+12
+13
+14
+16
+17
+18
+19

@@ -1,0 +1,161 @@
+Example: 
+
+  Create "Emp.java" at c:\abc folder with "in.kejal" package name.
+  Create "EmpTest.java" at c:\pqr folder with "in.jigar" package name. Add "main" method in "EmpTest" to create an object of "Emp" class that is located at C:\abc folder.
+
+Steps:
+
+1. 
+
+c:\abc>notepad Emp.java
+
+package in.kejal;
+
+class Emp
+{
+  public Emp()
+   {
+     System.out.println("EMP");
+   }
+}
+
+
+2.  Compilation
+
+c:\abc>javac Emp.java  -d   .
+
+
+3. 
+
+c:\pqr>notepad EmpTest.java
+
+package in.jigar;
+
+public class EmpTest
+{
+   public static void main(String []args)
+    {
+      //Fully qualified path/name
+       in.kejal.Emp emp = new in.kejal.Emp();
+
+     }
+}
+
+OR
+
+package in.jigar;
+
+import in.kejal.Emp;
+
+public class EmpTest
+{
+   public static void main(String []args)
+    {
+       
+        Emp emp = new  Emp();
+
+     }
+}
+
+4. Compilation
+
+c:\pqr>javac -cp  .;c:\abc  EmpTest.java -d  .
+
+
+  -cp stands for classpath
+  
+      We must have to direct the Java compiler about location of       classes using -cp switch
+
+        -cp  firstPath;secondPath
+
+        Use ; semi-colon to add two or more path of folder where         classes are stored.  
+
+
+c:\pqr>java -cp  .;c:\abc  in.jigar.EmpTest
+
+Or
+
+c:\>java -cp  c:\abc;c:\pqr  in.jigar.EmpTest
+
+
+   It is mandatory to tell the JVM about the location of packages/classes so use -cp switch with "java.exe" tool.
+
+
+import statement
+===============================================================
+
+The "import" is Java compiler's feature which allow developer to write / use classes without adding fully qualified package names.
+
+
+import java.util.Scanner;
+
+public class Sample{
+   public static void main(String []args){
+        Scanner scan = new Scanner(System.in);
+        ....
+   }
+}
+
+Is equivalent to 
+
+public class Sample{
+   public static void main(String []args){
+        java.util.Scanner scan = new java.util.Scanner(System.in);
+        ....
+   }
+}
+
+Syntax:
+
+ 1. import package.or.sub-package.ClassName;
+  
+    e.g
+     import in.kejal.Emp;
+
+ 2. import package.or.sub-package.*;
+
+    In this syntax, all classes of "specified" package can be used     without adding full package path.
+
+    package.* syntax cannot include nested packages.
+
+    for example,
+
+     import in.*;   cannot include in.kejal but it targets the all                     TYPES under the "in" package
+
+     import in.kejal.*;  It only targets the all TYPE under the                           in/kejal
+
+For better code-optimization, do not use "package.*". Always use "package.TypeName".
+
+for example,
+
+import java.util.ArrayList;
+import java.io.InputStream;
+import javax.swing.JFrame;
+  
+  and following is also valid but it doen't show how many "TYPES" are used in program.
+
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+
+     
+
+Bundle the classes ---- Java application packaging
+==================================================================
+
+In Java platform, packages and their classes are stored into compressed (ZIP like file) file called Java Archieve File (JAR).
+
+The jar.exe tool at JAVA_HOME\Bin is used to create a .jar file.
+
+
+Ex: Create .jar which include in.kejal.Emp class (or other types)
+
+c:\abc>jar -cvf  mylib.jar  in
+
+      -c create a jar
+      -v verbose (show output)
+      -f file name of .jar
+
+and now, you can point .jar instead of c:\abc folder to run,
+
+c:\>java -cp c:\abc\mylib.jar;c:\pqr in.jigar.EmpTest

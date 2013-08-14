@@ -1,0 +1,166 @@
+How objects (content of object) are compared in Java?
+=========================================================
+
+You'll find "equals()" method in each Java class and this is the de-facto (standard) method to check whether objects are equal or not. 
+  Following way of comparision of string objects (or any object) is 
+   inappropriate because they compare memory references.
+
+     e.g
+
+       String strOne = "Hello";
+       String strTwo = "hello";
+
+       if(strOne == strTwo) {}  <----- Here we're comparing references
+				 	of two objects and we are 
+				  	interested to compare values
+					not memory references.
+
+
+     So above approach is wrong!!!!
+
+    Here is valid approach:
+ 
+            if(strOne.equals(strTwo))
+                 System.out.println("Equal");
+            else
+                 System.out.println("Unequal");
+
+To add object "compare" ability in Java classes, we must have to override java.lang.Object's 
+
+    public boolean equals(Object obj)  method in our classes.
+
+We know that the "overriden" method must have same signature and if syntax of overriden method is not appropriate then we wont get the purpose of "overriden". 
+
+In Java, we've "@Override" annotation that is an instruction for Java compiler to verify the syntax of overriden method to its sub-class method.
+
+Ex:
+
+ @Override
+ public boolean equals(Object obj) {...}
+
+   Above statement is valid example of "method overriden"
+
+ but following will be considered as invalid by Java compiler,
+
+ @Override
+ public boolean equals(Student obj) { ..}
+
+  
+Example:
+
+class Student
+{
+    private int roll;
+    private String name;
+
+    ......
+
+  @Override
+  public boolean equals(Object obj) {
+    Student twoRef = (Student) obj;
+    if(roll == twoRef.roll 
+            && name.equals(twoRef.name))
+	return true;
+     return false;
+    }
+ }
+
+and code in main :
+
+  Student one = new Student(10,"Rajesh");
+  Student two = new Student(10,"Mohan");
+
+  if(one.equals(two))  // or two.equals(one)
+      System.out.println("Eq");
+  else
+      System.out.println("UnEq");
+
+
+Hash code and hash
+===============================================================
+The term "Hash" means obtain "int" value from given data by applying an algorithm.
+
+ For example,
+
+     Customer's bank detail is obtained via "account number"
+     Student's detail is obtained via "roll" in this case roll or
+     account number is "hash" of data.
+
+ Such techniques solve the issue to compare objects.
+
+Java API classes uses "hash" technique and we can also use same technique.
+
+ Here is an example of "String" class which overrides "Object's hashCode()" method:
+
+   String str1 = "Hello";
+   String str2 = "hello";
+
+   System.out.println(str1.hashCode() + " " + str2.hashCode());
+
+  [Note: Set same value to str1 and str2 and you'll find same hash code   value]
+
+In fact, you can use "hashCode" to compare your object data:
+
+For example,
+
+public class Student {
+	....
+	@Override
+	public int hashCode()
+	{
+	   int hash = roll;
+	   if(name != null){
+		   hash = hash + name.hashCode();
+           if(address!=null)
+                   hash = has + address.hashCode();
+             hash += status ? 1 : 0;
+                 
+	   }
+	   return hash;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		 return hashCode() == obj.hashCode();
+	}
+
+   .....
+}
+
+and code in main :
+
+  Student stdOne = new Student(10, "Manish");
+  Student stdTwo = new Student(10,null);
+  System.out.println(stdOne.hashCode() + " " + stdTwo.hashCode());
+		
+  if(stdTwo.equals(stdOne)) 
+	 System.out.println("EQ");
+  else
+         System.out.println("UnEq");
+
+@Override the toString()
+=================================
+When we use an object in "string" context. 
+
+ i.e System.out.println(objRef); then the "toString()" method of class      will be called.
+
+The "toString()" is for debugging purpose for developer to examine the value of an object.
+
+e.g
+ 
+class Student{
+   ...
+   @Override
+   public String toString() { return roll + " " + name;}
+}  
+
+
+
+
+
+
+
+
+
+
+
+

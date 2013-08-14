@@ -1,0 +1,163 @@
+2. Core API or Java TYPES System
+==========================================================
+Java's TYPE System falls into two groups:
+
+1. Primitive Types 
+
+2. Java Core API
+
+
+Primitive Types
+===============
+
+  Primitive Types are not a member of Java Core API.
+
+  Primitive Types are classes but they are defined
+  into Java "Compiler/Language".
+
+  There are "eight" primitive types.
+
+  Primitive Types are not developed as per object
+  oriented paradigm and that's why some people say
+  that the Java language is mixed programming paradigm
+  language.
+
+  Java's primitive types are not Core API members so they
+  have developed another set of "Classes/types" in Core API
+  which duplicates the functionalities of "primitive" types   and these classes are known as "Primitive Wrapper"    classes.
+
+
+
+  Primitive 			Primitive
+  Type		size(bytes)	Wrapper of Core API
+===========================================================
+
+1. byte		1		java.lang.Byte
+2. short	2		java.lang.Short
+3. int		4		java.lang.Integer
+4. long		8		java.lang.Long
+5. float	4		java.lang.Float
+6. double	8		java.lang.Double
+7. boolean	1		java.lang.Boolean
+8. char		2		java.lang.Character
+
+
+For example,
+
+ Nows day we can assign primitive value to wrapper object
+ and vice-versa --- and this feature was introducted in  Java 1.5 version.
+
+
+ In this feature, primitive to wrapper conversion is called
+                  "AutoBoxing".
+
+              and wrapper to primitive conversion is called
+                   "AutoUnboxing".
+
+
+   int age = 10;
+
+      is equivalent to
+
+   Integer age = 10;
+
+
+ 
+  //AutoUnboxing example
+
+   Integer no = 1002;
+   int n = no;     // Wrapper to Primitive
+
+ 
+   //AutoBoxing example
+
+   int n = 10;
+   Integer no = n;  //Primitive to Wrapper
+
+
+[NOTE : 70 to 80 % Core API classes cannot use "primitive"         types and that's why AutoBoxing/AutoUnboxing is
+        the most important feature of Java Core API]
+
+
+Core API 
+=====================================================
+Java's Core API is developed using "Unified  Programming Model" ( .Net ,C++ API are developed using Unified Programming Model).
+
+
+The "Unified" model enforce that :
+
+    1. Each and every "DataType" or Class must have one
+       and only one direct super-class.
+
+    2. Each and every "DataType" must be created under the
+       package (or namespace).
+
+
+For example,
+
+ class A
+  {
+  }
+
+ class B extends A
+  {
+
+   }
+ class C extends B {}
+
+
+ The class definition of "A" cannot have "extends" caluse  however the Java compiler insert "extends   java.lang.Object" to definition of class "A".
+
+   class A extends java.lang.Object
+   {}
+
+
+  It means if "extends" is not given then the default   super-class will be "java.lang.Object".
+
+
+         3. Inheritance is "Transitive".
+            It means a class can have one direct super             class and one or more indirect super-classes.
+
+         In above example,
+
+          The class "C" has one direct super class "B"
+          and class "B" has one direct super class "A"
+          and class "A" has one direct super class "Object"
+          and "Object" has no super-class.
+
+          That means the class "C" inherits class B,A and            Object.
+
+ In Java Core API, the java.lang.Object is a class has no super class and thats why this class is called "Root" or "Ultimate" super class.
+
+
+          What is "Inheritance"?
+
+              This is OOP technique to establish "is"
+              relationship between two classes.
+
+  
+ 
+  What is "package"?
+  ==================
+
+   The "package" system is technique to create a group of
+    classes and keep one group of classes "distinct" from
+    another group of "classes".
+
+    In fact, the package is just like a file-system folder
+    in which we can add classes/datatypes as per usage of
+    classes.
+
+
+
+    We must "create" package to define our classes. 
+    We must not define a class in "default" package.
+
+    What is "Default" package?
+
+         Default package is the name of current folder
+         in which .class file is placed if package name
+         is not specified in Java code file.
+
+         Always uses "named" package to define "classes"          that way you can avoid naming-conflict          (name-mangling).
+

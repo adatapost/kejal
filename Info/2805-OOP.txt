@@ -1,0 +1,277 @@
+public class Point
+{
+   private int x,y;
+
+   public Point() { } 
+   public Point(int x,int y){
+     this.x=x;
+     this.y=y;
+   }
+   //Passing object reference
+   public Point(Point point){
+     this.x = point.x;
+     this.y = point.y;
+   }
+
+   public int getX() { return x;}
+   public int getY() { return y;}
+   public void setX(int x) { this.x=x;}
+   public void setY(int y) { this.y=y;}
+
+   public void set(int x,int y){ 
+       this.x=x;
+       this.y=y;
+   }
+
+   public void set(Point point){
+      this.x=point.x;
+      this.y=point.y;
+   }
+   
+   public boolean pointEqual(Point point){
+
+       return this.x == point.x && 
+                 this.y == point.y;
+   }
+  
+  //Return an object reference
+   public Point addPoint(int value){
+
+
+      //Create temporary object
+      Point newPoint = new Point();
+      //set value to temp object
+
+      newPoint.x = x + value;
+      newPoint.y = y + value;
+
+      return newPoint; //return temp object ref
+   }
+
+  public Point addPoint(int x,int y){
+
+      //Create temporary object
+      Point newPoint = new Point();
+      //set value to temp object
+
+      newPoint.x = this.x + x;
+      newPoint.y = this.y + y;
+
+      return newPoint; //return temp object ref
+   }
+
+ public Point addPoint(Point point){
+
+      //Create temporary object
+      Point newPoint = new Point();
+      //set value to temp object
+
+      newPoint.x = this.x + point.x;
+      newPoint.y = this.y + point.y;
+
+      return newPoint; //return temp object ref
+   }
+
+}
+
+
+Main Test - 1 
+===============
+
+class PointTest
+{
+   public static void main(String []args)
+   {
+        Point one=new Point(10,20);
+        
+        Point two = new Point();
+        two.setX(one.getX());
+        two.setY(one.getY());
+
+        //Copy the object's content via constructor
+        Point three =  new Point(one); 
+        three.setX(45);
+        System.out.println(one.getX() + " " + one.getY());
+
+        System.out.println(three.getX() + " " + three.getY());
+    }
+}
+
+  Point three =  new Point(one);  
+        This statement,
+            > Creates a new object
+            > Pass object reference to constructor
+            > Update the newly created object.
+
+Main Test - 2
+================================
+
+       Point one=new Point(10,20);
+        
+        
+  
+        Point two = new Point();
+        //Copy an object's content via "set" method
+        two.set(one);
+        two.setX(45);
+        System.out.println(one.getX() + " " + one.getY());
+        System.out.println(two.getX() + " " + two.getY());
+
+Main Test - 3
+=======================================
+
+ Object comparisions using pointEqual method where this 
+ method receive an object reference.
+
+
+       Point one=new Point(10,20);
+       Point two = new Point(one);
+       
+
+       //two.setX(45);
+       System.out.println( one.pointEqual(two)); 
+      
+        if(two.pointEqual(one))
+             System.out.println("Equal");
+        else
+             System.out.println("Not Equal");
+
+        //Comparing memory addresses /references
+        //and this is not practical (i.e. it is improper)
+
+         if(two == one)
+              System.out.println("Equal");
+         else
+              System.out.println("Not Equal");
+
+Practice : Add "pointGreater" method to "Point" class.
+
+
+        System.out.println(one.getX() + " " + one.getY());
+
+        System.out.println(two.getX() + " " + two.getY());
+
+Main Test - 4
+===============================
+  Method returns an object reference
+
+
+ 
+        Point one=new Point(10,20);
+        Point two = new Point(2,5);
+
+        Point r = one.addPoint(6);
+
+
+        System.out.println(r.getX() + " " + r.getY());
+        r = one.addPoint(11,22);
+        System.out.println(r.getX() + " " + r.getY());
+        r = one.addPoint(two);
+        System.out.println(r.getX() + " " + r.getY());
+
+Create foll class definitions
+--------------------------------
+
+public class Point
+{
+  private int x,y
+  //constructor
+  //getter & setter
+}
+
+public class Rect
+{
+   private Point location;
+   private Point size;
+   //constructor
+   //getter & setter
+}
+
+ with "Main Tests". (code to creates objects of Rect 
+ & Point).
+
+
+
+Enhance the "MyNumber" class by adding addNo,subNo etc methods.
+
+
+MyNumber n1 = new MyNumber(4);
+MyNumber n2 = new MyNumber(48);
+
+MyNumber n5 = n1.addNo(n2);
+
+
+class MyNumber
+{
+
+   private int no;
+
+    public MyNumber() { }
+    public MyNumber(MyNumber p) { }
+    public MyNumber(int no) { }
+
+    public MyNumber addNo(MyNumber p) {}
+    public MyNumber subNo(MyNumber p) {}
+    public MyNumber mulNo(MyNumber p) {}
+    public MyNumber divNo(MyNumber p) {}
+    public MyNumber factNo() {}
+
+
+   public int getNo() { return no;}
+   public void setNo(int v) { no=v;}
+  
+    
+   public boolean isOdd() { return no%2!=0;}
+
+   public boolean isPrime()
+    {
+        for(int i=2;i<=no/2;i++)
+          {
+             if(no%i==0)
+                  return false;
+           }
+         return true;
+     } 
+   public boolean isPerfect()
+    {
+     return false;
+     }
+  
+   public boolean isPalindrome()
+   {
+     return false;
+    }
+  public int reverse()
+    {
+          return 0;
+     }
+  public void printFactorial()
+   {
+     int f=1;
+     for(int i=1;i<=no;i++)
+        {
+          f=f * i;
+         }
+     System.out.println(f);
+    }
+  public void printFebonacy()
+   {
+      int a=0,b=1,c;
+
+        for(int i=1;i<=no;i++)
+         {
+            c= a+b;
+            System.out.println(c);
+            a=b;
+            b=c;
+           }
+      }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+Object Oriented Paradigm (Approach or Methodology or Way)
+=========================================================
+
+ What is an OOP?
+ ---------------
+ It is a program design technique through which the  developer can :
+
+    1. Reuse his/her source code in number of programs.
+
+    2. Implements data-abstractions and        procedure-abstractions
+
+    3. Achieve the data encapsulation
+
+    4. Achieve the real-world polymorphism.
+
+    5. Define his/her types system.
+
+  
+  With OO paradigm your problem (or program definition) is   defined as "DataType/Class".
+
+  To re-use of code, we will learn :
+              1. Object composition
+              2. Inheritance and
+              3. Generics (Templated Data types)
+
+  To achieve data and procedure "Abstractions" will be   learn techniques to hide/show functionalities of our      
+  datatype.
+
+  Encapsulation means to create a new datatype in which
+  we can bind data to the methods (functions).
+
+
+  Polymorphism means an entity has multiple forms. It means
+  an entity has ability to change its behavior based upon
+  data.   
+           e.g Word document file draged and drop into
+               "Printer" icon will starts printing and
+               same doc file will be coptied if it is                draged to ordinary folder and it will be opend/viewed if it is draged into word application icon.
+
+
+What do you understood by the term "Object"?
+---------------------------------------------
+
+An object means collection of "reserved" bytes.
+
+  Or
+
+In other words, partitioned area of RAM (memory) is called an object.
+
+
+   e.g
+
+     int m = 10;
+
+     In this example, "four" bytes will be allocated
+     and value "10" is stored into these "four" bytes.
+
+     So here, four bytes group is called an "Object".
+
+
+What is "class"?
+----------------------------------------------------
+
+The "class" (also called datatype) is the prime entity in which it consists 'data-description' and associated actions (functions) which are executed as per data.
+
+
+In other words, the "class" is designed time entity or conceptual entity in which we've to define the data-structure and its assocated methods.
+
+  for example,
+
+    "int" class can store "integral" value into memory and
+    its associated methods called - operators -- = , + , -     etc are used to perform actions.
+
+In other words, binding of "actions (methods)" to the data is called "class".
+
+
+In programming environment, we've some pre-defined TYPES/classes that are developed by skilled/expert developers to help us in development of our "DataTypes".
+
+
+In OOP, it is mandatory that the methods (actions) are request via "data". i.e With the help of "data" we can request methods (actions).
+
+
+
+The "class" keyword
+---------------------------------
+To define new datatypes, we will use "class" keyword. However in Java, we can have "interface" and "enum" keyword to define some specialized datatypes.
+
+
+General Syntax:
+
+
+access_modifier 
+storage_modifier
+class ClassName [extends SuperClassName]
+                [implements interface1,interface2, ...]
+ {
+  
+   //data description (data members)
+
+   //action description (methods or member functions)
+
+ }
+
+
+
+Example demonstrate the datatype called "Date" whose data members are "day", "month" and "year".
+
+
+class Date
+{
+   int d,m,y;  //data members or fields
+
+}
+
+Fields or data members do not occupies any memory until an object of that "Date" class is created.
+
+These "fields" are instruction for JVM to allocate "12" bytes when you create an object of Date class.
+
+
+The "new" keyword will be used to create an object (ie. it is an instruction to JVM and JVM will allocate memory).
+
+
+Syntax:
+
+   ClassName varName;        
+ 
+   varName = new ClassName();
+ 
+ OR
+
+   ClassName varName = new ClassName();
+                       ^
+                       |
+
+      The "new" keyword instructs the JVM that JVM should allocate memory of "fields" defined inside the "ClassName".
+
+
+     e.g
+
+       Date dt = new Date(); // The JVM will allocate                              // memory for d,m, and y
+                             // of Date class and this
+                             // memory allocation is called
+                             // "object" -- a Date object.
+
+ int m =10;
+

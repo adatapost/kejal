@@ -1,0 +1,80 @@
+What are the roles of programming languages?
+=======================================================
+
+1. It provides syntax (grammar).
+
+2. It allow us to write or type the code to instruct the
+   operating system and its system softwares.
+
+3. Language "translate" program code  into "native" or
+   "operating system" or "platform" instructions.
+
+
+
+ e.g
+
+   C/C++ Program => Compiled and Translated => To OS                                                instructions
+
+   Java Language
+   program       => Compiled and Translated => To Java
+                                               platform 
+                                               instructions
+                                                  ||
+                                                  \/                                                  Java platform
+                                          Compiler
+					  translates 
+					  it to OS 
+					  instructions.
+                                                 ||
+                                                 \/
+                                               To OS
+                                             Instructions
+
+What is Platform/Framework?
+========================================================
+
+The framework/platform is a programming environment (software tools) which is installed upon the OS i.e started with operating system and expose operating system's functionalities via "DataTypes" (or system-level and high-level classes).
+
+
+  OR
+
+ 1. It is installed upon the OS (There are different      versions of platform for different operating systems).
+
+ 2. It provides the best "approach" to expose the
+    underlying functionalities from operating system.
+
+ 3. These functionalities is available to developer in form     of classes, interfaces, enums (Different DataTypes in     Java).
+
+    Java Platform's "Data Types" are designed using an     Object-Oriented Paradigm (approach/methodology).
+
+
+Java Platforms
+============================================
+There are three Java Platforms:
+
+
+1. Java Standard Edition (Java SE) which contains:
+
+         1. Java Language
+         2. Java Core API (essential datatypes)
+         3. Java Runtime Environment (JRE)
+
+    This is general purpose "Platform" and number of     specific purpose platforms are developed especially -     Java EE, Java ME, and Android using it.
+   
+2. Java Enterprise Edition (Java EE) which contains:
+
+          1. Web Technologies - Servlet, JSP, EL, JSTL
+          2. Mail API (Application Programming Interface or
+                       classes)
+          3. EJB APIs etc
+
+3. Java Micro Edition (Device Platform) which contains:
+
+          1. Device Runtime Environment
+          2. DataTypes or classes
+
+
+
+  
+
+

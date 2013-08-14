@@ -1,0 +1,415 @@
+Wrapper Types Or Helper classes
+====================================================================
+
+Classes at java.lang package which duplicate functionalities of "primitive" data-types are known as "Wrapper" types.
+
+  Java's primitive datatypes are not part of Java API and some of Java API cannot understand (recognize) the primitive types so in such cases we've to use "Wrapper" types.
+
+The java.lang.Numer class
+==========================
+Number and its sub-classes support "auto-boxing" and "auto-unboxing".
+
+  The compiler will create an object of appropriate wrapper to store literal or data is called "auto-boxing".
+
+   e.g
+ You can use,
+    Integer no = 10;  and compiler will translate this statement as:
+			 
+    Integer no = new Integer(10);
+ 
+Another example,
+
+     Double amount = 10.10; will be Double amount = new Double(10.10);
+ 
+     Number value = 10.20 ; will be value = new Double(10.20);    
+
+  To retrieve value from "wrapper" object to primitive value is called  "auto-unboxing".
+
+      Double amount = 10.10; // autoboxing
+      double value = amount; // autounboxing
+
+    Autounboxing feature call the xxxxxValue() (e.g floatValue(), doubleValue(), intValue() etc) method.
+
+
+      e.g
+            Integer no = 10; is equivalent to no = new Integer(10);
+            int n = no; is equivalent to int n = no.intValue();
+
+Example : 1
+-------------
+
+Integer and its methods
+
+    Q - 1 Parse the string to integer
+
+          String str = "100";
+          int no = Integer.parseInt(str);
+          //or
+          //Integer no = Integer.parseInt(str);
+          System.out.println(no* 2);
+    
+   Q -2    hexa decimal string to int
+
+           String str = "FF";
+           int no = Integer.parseInt(str, 16); //16 is base of hexa
+           System.out.println(no);
+
+   Q - 3  octal (base 8) and binary (base 2)
+
+           String str = "1010";
+           int no = Integer.parseInt(str, 2);
+           System.out.println(no);
+
+    Q - 4  int or Integer value to hexa,binary,decimal string
+
+           Integer no = 1000;
+           String str = no.toString();
+           System.out.println(str);
+
+           int mno = 10;
+           String str1 = Integer.toString(mno);
+           System.out.println(str1);
+
+           System.out.println(Integer.toHexString(1000));
+           System.out.println(Integer.toOctalString(1000));
+           System.out.println(Integer.toBinString(1000));
+
+   Q - 5   Set "string" data into environment and retrieve them via
+           Integer.getInteger() method.
+
+            System.setProperty("no","100");
+            Integer no = Integer.getInteger(no);
+            if(no!=null)
+                System.out.println("Found and value is : " +no);
+            else
+                System.out.println("Not found in system property");
+
+   Q - 6   Hex, Octal, Decimal to Integer conversion using decode()
+
+             String str = "0xff";
+             Integer  no = Integer.decode(str);
+             System.out.println(no);
+
+Long, Short, Byte classes has simlar methods as "Integer".
+
+
+Float and Double 
+=========================================================
+  
+  1. String to double/float
+
+     String str = "10.10";
+     Double value = Double.parseDouble(str);
+     System.out.println(value);
+
+  2. Float/double to string
+
+     float no = 10.10f;
+     double dno = 202.20;
+     String str = Float.toString(no);
+     String dStr  = Double.toString(dno);
+ 
+     Double amount = 100.10;
+     str  = amount.toString();
+
+
+String datatypes
+=================================================================
+There are three "String" datatypes in Java:
+
+   1. java.lang.String -- It is immutable object - Content of 			"immutable" object cannot be changed.
+
+   2. java.lang.StringBuffer -- It is mutable, non-thread safe object. 	
+				Mutable object can be changed/updated.
+
+   3. java.lang.StringBuilder -- It is same as "StringBuffer" but
+				 it is "thread-safe".
+
+    What is thread-safe/unsafe?
+    ------------------------------
+
+      Thread - Safe : A single object is addressed by two or more                       programs/threads under the "monitor" system so 			that object can be processed by a program at 			once and other programs will waits.
+
+      Thread - unsafe : A single object is accessed/addressed by two or
+			more programs/threads without monitor system so
+			output/result will be unexpected/strange.
+
+
+ String Vs StringBuffer/Builder
+ --------------------------------
+
+ Always use String object when the size of "text" is fixed.In Java, when you put double quote around the text, it will be an object of String class.
+
+      e.g
+
+         String name = "Rajesh";
+         String address = "12,Abc society";
+
+
+ Never use "String" object when you want to append/insert text. That way you're not appending or inserting string but you're creating a new object.
+
+          Don't do this:
+           String str = "";
+           for(int i=1;i<=10;i++)
+             {
+              str = str + i;
+              }
+            In above example, 11 string objects will be created and 	   of-course 10 objects will be released.
+
+         Always use StringBuffer/Builder
+        
+           StringBuffer bf = new StringBuffer();
+           for(int i=1;i<=10;i++)
+              {
+                  bf.append(i);
+                }
+            A single object will be created and size of object will be 		"grows" when you insert data and "shrink" when you 		remove.
+
+
+
+Time & space analysis
+=========================
+
+  String class : code in main()
+
+		 String str  = "";
+		 long start = System.currentTimeMillis();
+		 for(int i = 1;i<=20000;i++){
+			 str = str + " " + i;
+		 }
+		 long end = System.currentTimeMillis();
+		 System.out.println( (end-start) + " ms.");
+
+     Worst case : Time and memory(space) will be needed more 		 propotionaly.
+
+  StringBuilder/Buffer : code in main()
+
+                StringBuffer sb = new StringBuffer();
+		 long start = System.currentTimeMillis();
+		 for(int i = 1;i<=200000;i++){
+			 sb.append("" + i);
+		 }
+		 long end = System.currentTimeMillis();
+		 System.out.println( (end-start) + " ms."); 
+    Best case : Simlar time on each iteration and space will be grows 		propotionaly.
+
+
+
+String to byte array and char array
+---------------------------------------------------------
+
+           String str = "Hello";
+	   char []car = str.toCharArray();
+	   byte []bar = str.getBytes();
+	   
+	   for(char ch : car)
+		    System.out.println(ch);
+	   
+	   for(byte b: bar)
+		   System.out.println(b  + " " + (char)b);
+
+
+Byte / char array to string
+---------------------------------------------------------------
+
+ Use String() constructors:
+ 
+    byte []bar = { 65,66,67 };
+    char []car = {'P','Q','R'};
+    
+     String str1 = new String(bar); 
+     String str2 = new String(car);
+
+     System.out.println(str1 +  "   " + str2);
+
+
+Convert primitive  value to String - String.valueOf(value)
+-------------------------------------------------------------------
+   int no = 10;
+   String str = String.valueOf(no); // Integer.toString(no);
+
+
+Return a char or code at index - charAt(index), codePointAt(index)
+----------------------------------------------------------
+   
+   String name = "Rajesh Mahesh Shah";
+   System.out.println(name.charAt(0) +  "." + name.charAt(6));
+
+
+Find length of string -- length() and remove trailing and leading spaces -- trim()
+------------------------------------------------------------------
+
+  String name = "   The red sun   ";
+  System.out.println(name.length());
+  
+  name = name.trim();  //"The red sun"
+
+  System.out.println(name + "" + name.length());
+
+toLowerCase(), toUpperCase() --- change case of letters
+-----------------------------------------------------------
+  String name = "Hello";
+  System.out.println(name.toLowerCase() +  "  "+  name.toUpperCase());
+  System.out.println(name);
+
+
+
+Search "string" and returns index of searched string -- indexOf(), lastIndexOf()
+--------------------------------------------------------------------
+
+   String name = "the red sun and red rose";
+   System.out.println(name.indexOf("red"));
+   System.out.println(name.indexOf("rod"));
+
+Ex: Find the occurence of "red" word
+
+    String name = "the red sun and red rose";
+    int count  =0;
+    int i = -1;
+    while( (i = name.indexOf("red",i+1) )!=-1)
+       {
+	  System.out.println(i);
+          count++;
+	 }
+
+    System.out.println(count);
+
+=================
+Use / learn - lastIndexOf() method
+=================
+
+Regular Expression and strings
+========================================================
+
+Regular expression is pattern based matcher system. The classes located at java.util.regex define detailed actions of "regular expression" but with String class object we'll learn -- How to create a "pattern" to search, replace, split the string.
+
+
+   search a text where first letter is 1 or 2 or 3
+                       second letter will be lower case alphabet
+			third letter must be capital A or G or T
+
+   take a look at email :   word.word@word.word.word.word   
+
+    pin code :six digit  : first 1 to 9  
+                           secon 0 to 9
+
+  To consturct the regular expression pattern, following character   classes are used:
+
+  class		meaning
+========================================================
+    .		It matches any character
+    \w		It matches a word character (a to z, A to Z 0 to 9)
+    \W		It matches non-word char
+    \d		It matches a digit
+    \D		It matches non-digit
+	\s	It matches whitespace
+	\S	It matches non-whitespace
+
+	[set]	It matches a set
+		e.g
+		[abc] -- either a or b or c
+		[a-zA-Z0-9]  -- any word char
+		[0-9] - any digit
+        (group) It matches a group
+
+Quntifiers  ?	It matches single char
+	    *   It matches zero or more char
+	    +   It matches one or more char
+	    {n} It matches n char
+            {n,m} it matches n to m char
+
+Patterns and String.matches() method ---- It matches the string value against given pattern
+=====================================================================
+
+                 String name = "1029";
+		 String pattern = "\\d+"; // one or more gigits
+		 System.out.println(name.matches(pattern));
+
+		 name = "392812";
+		 pattern = "\\d{6}";
+		 System.out.println(name.matches(pattern));
+ 
+		 name = "aa@aa.com";
+		 pattern = "\\w+@\\w+[.]\\w+";
+		 System.out.println(name.matches(pattern));
+		 
+		 name = "3qD";
+		 pattern = "[123][a-z][ADR]";
+		 System.out.println(name.matches(pattern));
+		 
+		 name = "14th Floor, Raj Mahel Road";
+		 pattern = "[\\s\\w.,]{5,200}";
+		 System.out.println(name.matches(pattern));
+		 
+		 name = "Mr. Rajesh";
+		 pattern = "[a-zA-Z\\s.]{5,20}";
+		 System.out.println(name.matches(pattern));
+		 
+		 name = "982342343";
+		 pattern = "\\d{10,13}";
+		 System.out.println(name.matches(pattern));
+		 
+		 pattern = "[+]\\d\\d[ ]\\d{10}";
+		 name = "+91 9876545342";
+		 System.out.println(name.matches(pattern));
+		 
+		 pattern = "(Black|Yellow|Blue|White)";
+		 name = "Yellow";
+		 System.out.println(name.matches(pattern));
+  
+
+String.split(pattern) 
+-----------------------------------------
+It breaks a string into array by spliting as per given pattern.
+
+Ex:  Convert comma delemited string to array
+     String text = "1,Rajesh,Mehsana";
+     String pattern = "[,]";
+     String values[] = text.split(pattern);
+     for(String s: values)
+          System.out.println(s);
+     System.out.println("No : " + values[0]);
+     System.out.println("Name : " + values[1]);
+     System.out.println("City : " + values[2]);
+
+Ex:       String text = "The|     red, sun, 102, hello: world";
+	  String pattern = "[|, :]";
+	  String []ar = text.split(pattern);
+
+Ex:  Split by non-digit pattern
+     String[] ar = "hello 10 rj 400 phno 3030".split("\\D+");
+
+
+String.replace() -- non regular expression replace method
+---------------------------------------------------------------
+
+       String name = "The red sun and red rose";
+        name = name.replace("red", "white")
+        		    .replace("sun", "moon")
+        		    .replace("rose", "paper");
+        System.out.println(name);
+
+String.replaceAll() --- regular expression method
+-----------------------------------------------------
+       //remove digits from given string
+       String name = "The 92 red sun 12and re33d ros112e12 33";
+        String pattern = "\\d+";
+        name = name.replaceAll(pattern, "");
+        
+        System.out.println(name);
+
+
+String.startsWith() and String.endsWith()
+=================================================
+
+       String name = "file.cs";
+       
+       if(name.endsWith(".java"))
+    	    System.out.println("Java file");
+       else
+    	  if(name.endsWith(".cs"))
+    		  System.out.println("C# file");
+
+       name = "The red sun";
+       if(!name.endsWith("."))
+               System.out.println("Statement is not complete.");
